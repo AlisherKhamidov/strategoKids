@@ -7,17 +7,17 @@ const { Event } = require('../db/models');
 router
   .route('/')
   .get((req, res) => {
-    console.log('get')
+    console.log('get');
     Event.findAll({ raw: true })
       .then((allEvents) => res.json(allEvents))
       .catch((error) => res.status(500).json({ message: error.message }));
   })
   .post((req, res) => {
-    console.log('post')
+    console.log('post');
     const {
       title, description, photo,
     } = req.body;
-    console.log(title, description)
+    console.log(title, description);
 
     // if (kidName && birthDate) {
     Event.create({
