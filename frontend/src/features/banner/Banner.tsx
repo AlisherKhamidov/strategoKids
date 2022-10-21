@@ -2,10 +2,8 @@
 import { useNavigate } from 'react-router-dom';
 import logo from './images/logoCentered.png';
 
-// dlia gita
-
 // eslint-disable-next-line
-import style  from './Banner.module.css';
+import style from './Banner.module.css';
 
 export default function Banner(): JSX.Element {
   const navigate = useNavigate();
@@ -17,11 +15,11 @@ export default function Banner(): JSX.Element {
       <div className={style.textBanner}>
         <h1 className={style.title}>Stratego Kids</h1>
         <h4 className={style.losung}>Детская школа шахмат и логических игр в Санкт-Петербурге</h4>
-          <div className={style.buttonRow}>
-            <button type="button" className={style.whiteBtn} onClick={() => navigate('/application')}>
+        <div className={style.buttonRow}>
+          <button type="button" className={style.whiteBtn} onClick={() => navigate('/application')}>
             Записать ребенка
-            </button>
-          </div>
+          </button>
+        </div>
       </div>
     </div>
   );
