@@ -2,13 +2,14 @@
 import { useNavigate } from 'react-router-dom';
 import logo from './images/logoCentered.png';
 
+// dlia gita
+
 // eslint-disable-next-line
 import style  from './Banner.module.css';
 
 export default function Banner(): JSX.Element {
   const navigate = useNavigate();
   return (
-
     <div className={style.banner}>
       <div className={style.circle}>
         <img className={style.logo} src={logo} alt="" />
@@ -22,7 +23,6 @@ export default function Banner(): JSX.Element {
             </button>
           </div>
       </div>
-
     </div>
   );
 }
