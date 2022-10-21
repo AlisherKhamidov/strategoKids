@@ -1,7 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import 'semantic-ui-css/semantic.min.css';
-import { Form, Input, TextArea, Button } from 'semantic-ui-react';
+import { Form, Input, Button } from 'semantic-ui-react';
 import style from './Application.module.css';
 import sendApplication from './telegramApi';
 import createApplication from './types/api';

@@ -22,4 +22,5 @@ app.use('/api/applications', applicationApi);
 app.use('/api/events', eventsApi);
 app.use('/api/groups', groupsApi);
 
+// eslint-disable-next-line no-console
 app.listen(PORT, () => console.log(`👩‍👧‍👦 Server started at ${PORT} port 👩‍👧‍👦`));
