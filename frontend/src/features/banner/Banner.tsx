@@ -1,12 +1,12 @@
-
-
-//eslint-disable-next-line
-import logo from './images/logo.png' ;
+// eslint-disable-next-line
+import { useNavigate } from 'react-router-dom';
+import logo from './images/logoCentered.png';
 
 // eslint-disable-next-line
 import style  from './Banner.module.css';
 
 export default function Banner(): JSX.Element {
+  const navigate = useNavigate();
   return (
 
     <div className={style.banner}>
@@ -14,8 +14,13 @@ export default function Banner(): JSX.Element {
         <img className={style.logo} src={logo} alt="" />
       </div>
       <div className={style.textBanner}>
-        <h1>Stratego Kids</h1>
-        <h4>Детская школа шахмат и логических игр в Санкт-Петербурге</h4>
+        <h1 className={style.title}>Stratego Kids</h1>
+        <h4 className={style.losung}>Детская школа шахмат и логических игр в Санкт-Петербурге</h4>
+          <div className={style.buttonRow}>
+            <button type="button" className={style.whiteBtn} onClick={() => navigate('/application')}>
+            Записать ребенка
+            </button>
+          </div>
       </div>
 
     </div>
