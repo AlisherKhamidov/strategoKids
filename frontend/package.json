@@ -13,10 +13,13 @@
     "@types/react-dom": "^18.0.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-hook-form": "^7.38.0",
     "react-redux": "^8.0.4",
     "react-router-dom": "^6.4.2",
     "react-scripts": "5.0.1",
     "redux": "^4.2.0",
+    "semantic-ui-css": "^2.5.0",
+    "semantic-ui-react": "^2.1.3",
     "typescript": "^4.8.4",
     "web-vitals": "^2.1.4"
   },
@@ -34,6 +37,8 @@
       "airbnb-typescript"
     ],
     "rules": {
+      "react/jsx-props-no-spreading": 0,
+      "slintreact/jsx-props-no-spreading": 0,
       "jsx-a11y/interactive-supports-focus": 0,
       "jsx-a11y/control-has-associated-label": 0,
       "react/jsx-indent": 0,
