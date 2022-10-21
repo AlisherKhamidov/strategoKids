@@ -41,7 +41,7 @@ export default function Events(): JSX.Element {
   return (
     <>
       <h1>Здесь будут события ( или мероприятия)</h1>
-      <form onSubmit={handleSubmit}>
+      <form>
         <input type="text" name="title" placeholder="название" />
         <input type="text" name="description" placeholder="описание" />
         <input type="text" name="photo" placeholder="ссылка на фото" />

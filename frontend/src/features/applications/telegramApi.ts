@@ -1,4 +1,6 @@
-export default async function sendApplication(data) : Promise<void> {
+import Data from './types/Data';
+
+export default async function sendApplication(data: Data) : Promise<void> {
     const chatId = '-1001813038228';
     const token = '5717459131:AAGiPPcX2AzJLLN_gaapW1oExQQvKzN2dn8';
     const br = '%0A'; // перенос строки
