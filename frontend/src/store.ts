@@ -1,11 +1,12 @@
 // Использование Redux без Redux Toolkit - считается устаревшей практикой
 import { configureStore } from '@reduxjs/toolkit';
 import { useDispatch } from 'react-redux';
+import groupsSlice from './features/groups/groupsSlice'
 // import authReducer from './features/auth/authSlice';
 
 const store = configureStore({
   reducer: {
-    // auth: authReducer,
+   groups: groupsSlice,
   },
 });
 
