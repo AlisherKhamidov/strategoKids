@@ -1,33 +1,37 @@
 /* eslint-disable max-len */
 
 const router = require('express').Router();
-const { Application } = require('../db/models');
+const { Event } = require('../db/models');
 
-// /api/Applications
+// /api/Events
 router
   .route('/')
   .get((req, res) => {
-    Application.findAll({ raw: true })
-      .then((allApplications) => res.json(allApplications))
+    console.log('get')
+    Event.findAll({ raw: true })
+      .then((allEvents) => res.json(allEvents))
       .catch((error) => res.status(500).json({ message: error.message }));
   })
   .post((req, res) => {
+    console.log('post')
     const {
       title, description, photo,
     } = req.body;
-    console.log(title, description, photo);
+    console.log(title, description)
+
     // if (kidName && birthDate) {
-    Application.create({
+    Event.create({
       title, description, photo,
+
     })
-      .then((newApplication) => res
+      .then((newEvent) => res
         .status(201)
-        .json({ newApplication, create: true, message: 'Application added' }))
+        .json({ newEvent, create: true, message: 'Event added' }))
       .catch((error) => res.status(500).json({ message: error.message }));
-    // }
-    // else {
-    res.status(400).json({ created: false });
-    // }
-  });
+    // } else {
+    //   res.status(400).json({ created: false });
+  },
+    //   }
+  );
 
 module.exports = router;
