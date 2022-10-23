@@ -1,18 +1,18 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import * as api from "./api";
-import Group, { GroupId } from "./types/Group";
-import GroupsListState from "./types/GroupsListState";
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import * as api from './api';
+import Group, { GroupId } from './types/Group';
+import GroupsListState from './types/GroupsListState';
 
 const initialState: GroupsListState = {
   groupsArr: [],
 };
 
-export const loadGroups = createAsyncThunk("groups/loadGroups", () =>
+export const loadGroups = createAsyncThunk('groups/loadGroups', () =>
   api.loadGroups()
 );
 
 const groupsSlice = createSlice({
-  name: "groups",
+  name: 'groups',
   initialState,
   reducers: {},
   extraReducers: (builder) => {

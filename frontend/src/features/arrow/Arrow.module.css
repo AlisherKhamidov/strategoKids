@@ -1,0 +1,24 @@
+/* arrow {
+  background-color: #ed6a1d;
+  color: #ed6a1d;
+  width: 10px;
+  height: 10px;
+  clip-path: polygon(100% 0, 0 0, 50% 65%);
+} */
+.container {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+}
+.arrow {
+  background: #ed6a1d;
+  position: relative;
+  width: 0; 
+  height: 0;
+ }
+ .arrow::after {
+  content: ''; 
+  border: 20px solid transparent; 
+  border-top: 20px solid #ed6a1d;
+  border-radius: 5px;
+ }

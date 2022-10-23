@@ -12,6 +12,8 @@ import { selectAuthChecked } from '../features/auth/selectors';
 import { getUser } from '../features/auth/authSlice';
 import Login from '../features/auth/Login';
 import Registration from '../features/auth/Registration';
+import Schedule from '../features/schedule/Schedule';
+import Art from '../features/art/Art';
 // import { selectLogin } from '../features/auth/selectors';
 
 function App(): JSX.Element {
@@ -37,6 +39,8 @@ function App(): JSX.Element {
           <Route path="/application" element={<Application />} />
           <Route path="/events" element={<Events />} />
           <Route path="/groups" element={<Groups />} />
+          <Route path="/schedule" element={<Schedule />} />
+          <Route path="/art" element={<Art />} />
           <Route path="/login" element={<Login />} />
           <Route path="/registration" element={<Registration />} />
         </Route>
