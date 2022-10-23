@@ -1,17 +1,29 @@
-import React from 'react'
-import Group from './types/Group'
+import React from "react";
+import Group from "./types/Group";
 
 interface GroupPops {
-group: Group;
+  group: Group;
+  handleRemove: (group: Group) => void;
 }
 
-function GroupCard({group}: GroupPops): JSX.Element {
+function GroupCard({ group, handleRemove }: GroupPops): JSX.Element {
   return (
-    <div>
-    <div>{group.title}</div>
-    <img src={group.img}/>
+    <div className="card">
+      <div
+        className="btn"
+        style={{ display: "flex", justifyContent: "flex-end" }}
+      >
+        <button className="ui icon button" onClick={() => handleRemove(group)}>
+          <i className="trash icon"></i>
+        </button>
+      </div>
+      <div className="content">{group.title}</div>
+      <img className="ui medium rounded image" src={group.img} />
+      <div>
+        <p>{group.info}</p>
+      </div>
     </div>
-  )
+  );
 }
 
-export default GroupCard
+export default GroupCard;
