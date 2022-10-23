@@ -3,33 +3,36 @@ const {
 } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
-  class Group extends Model {
+  class User extends Model {
     static associate({ Kid }) {
-      Group.hasMany(Kid, { foreignKey: 'group_id' });
+      User.hasMany(Kid, { foreignKey: 'user_id' });
     }
   }
-  Group.init({
+  User.init({
     id: {
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
       type: DataTypes.INTEGER,
     },
-    title: {
-      allowNull: false,
+    name: {
       type: DataTypes.TEXT,
     },
-    img: {
-      allowNull: false,
+    email: {
       type: DataTypes.TEXT,
     },
-    info: {
-      allowNull: false,
+    password: {
       type: DataTypes.TEXT,
+    },
+    phone: {
+      type: DataTypes.TEXT,
+    },
+    isAdmin: {
+      type: DataTypes.BOOLEAN,
     },
   }, {
     sequelize,
-    modelName: 'Group',
+    modelName: 'User',
   });
-  return Group;
+  return User;
 };
