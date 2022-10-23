@@ -9,8 +9,8 @@ export default function Header(): JSX.Element {
       <Link className={headerStyle.link} to="/application">Подача заявки</Link>{' '}
       <Link className={headerStyle.link} to="/events">События</Link>
       <Link className={headerStyle.link} to="/groups">Группы</Link>
-      <Link className={headerStyle.link} to="/auth/login">Войти</Link>
-      <Link className={headerStyle.link} to="/register">Зарегистрироваться</Link>
+      <Link className={headerStyle.link} to="/login">Войти</Link>
+      <Link className={headerStyle.link} to="/registration">Зарегистрироваться</Link>
     </nav>
   );
 }
