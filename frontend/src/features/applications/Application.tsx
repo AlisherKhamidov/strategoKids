@@ -4,7 +4,7 @@ import 'semantic-ui-css/semantic.min.css';
 import { Form, Input, Button } from 'semantic-ui-react';
 import style from './Application.module.css';
 import sendApplication from './telegramApi';
-import createApplication from './types/api';
+import createApplication from './api';
 import Data from './types/Data';
 
 export default function Application(): JSX.Element {

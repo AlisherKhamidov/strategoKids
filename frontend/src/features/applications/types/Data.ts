@@ -4,5 +4,5 @@ export default interface Data {
     parentName: string;
     phone: string;
     experience: string;
-  
+
   }

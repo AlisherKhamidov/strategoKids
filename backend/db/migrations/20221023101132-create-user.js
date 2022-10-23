@@ -1,21 +1,27 @@
 /* eslint-disable no-unused-vars */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Groups', {
+    await queryInterface.createTable('Users', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      title: {
+      name: {
         type: Sequelize.TEXT,
       },
-      img: {
+      email: {
         type: Sequelize.TEXT,
       },
-      info: {
+      password: {
         type: Sequelize.TEXT,
+      },
+      phone: {
+        type: Sequelize.TEXT,
+      },
+      isAdmin: {
+        type: Sequelize.BOOLEAN,
       },
       createdAt: {
         allowNull: false,
@@ -28,6 +34,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Groups');
+    await queryInterface.dropTable('Users');
   },
 };
