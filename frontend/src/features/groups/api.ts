@@ -21,7 +21,7 @@ export async function createGroup(group: {
   const result = await response.json();
   return result.newGroup;
 }
-
+// /jjjj
 export async function deleteGroup(id: GroupId): Promise<void> {
     await fetch(`/api/groups/${id}`, {
       method: 'DELETE',
