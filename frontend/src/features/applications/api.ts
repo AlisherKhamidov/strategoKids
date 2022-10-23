@@ -1,4 +1,4 @@
-import Data from './Data';
+import Data from './types/Data';
 
 export default async function createApplication(data: Data): Promise<Data> {
     const response = await fetch('/api/applications', {
