@@ -19,7 +19,7 @@ const groupsSlice = createSlice({
     builder.addCase(loadGroups.fulfilled, (state, action) => {
       state.groupsArr = action.payload;
 
-      Object.assign(action.payload);
+      // Object.assign(action.payload);
     });
   },
 });
