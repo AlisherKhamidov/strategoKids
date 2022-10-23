@@ -4,6 +4,7 @@ const express = require('express');
 
 // роутеры
 const applicationApi = require('./routes/applicationsApi');
+const eventsApi = require('./routes/eventsApi');
 const groupsApi = require('./routes/groupsApi');
 
 // конфигурация сервера
@@ -18,6 +19,8 @@ serverConfig(app);
 
 // подключение роутеров (обработчики)
 app.use('/api/applications', applicationApi);
+app.use('/api/events', eventsApi);
 app.use('/api/groups', groupsApi);
 
+// eslint-disable-next-line no-console
 app.listen(PORT, () => console.log(`👩‍👧‍👦 Server started at ${PORT} port 👩‍👧‍👦`));

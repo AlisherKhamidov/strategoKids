@@ -4,5 +4,5 @@ export default interface Group {
     img: string;
     info: string;
   }
-  
+
   export type GroupId = Group['id'];

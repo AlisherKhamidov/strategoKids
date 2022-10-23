@@ -1,22 +1,18 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import 'semantic-ui-css/semantic.min.css';
-import { Form, Input, TextArea, Button } from 'semantic-ui-react';
+import { Form, Input, Button } from 'semantic-ui-react';
 import style from './Application.module.css';
-
-interface Data {
-  kidName: string;
-  birthDate: string;
-  parentName: string;
-  phone: string;
-  experience: string;
-}
+import sendApplication from './telegramApi';
+import createApplication from './types/api';
+import Data from './types/Data';
 
 export default function Application(): JSX.Element {
   const { register, handleSubmit } = useForm<Data>();
 
   function onSubmit(data: Data): void {
-    console.log(data);
+    createApplication(data);
+    sendApplication(data);
     }
   return (
     <div className={style.formochka}>
