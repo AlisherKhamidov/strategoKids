@@ -1,9 +1,9 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
-import { stat } from 'fs/promises';
+// import { stat } from 'fs/promises';
 
 import * as api from './api';
-import Group, { GroupId } from './types/Group';
+import { GroupId } from './types/Group';
 import GroupsListState from './types/GroupsListState';
 
 const initialState: GroupsListState = {
