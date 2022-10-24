@@ -6,6 +6,7 @@ const express = require('express');
 const applicationApi = require('./routes/applicationsApi');
 const eventsApi = require('./routes/eventsApi');
 const groupsApi = require('./routes/groupsApi');
+const authApi = require('./routes/authApi');
 
 // конфигурация сервера
 const serverConfig = require('./config/serverConfig');
@@ -21,6 +22,7 @@ serverConfig(app);
 app.use('/api/applications', applicationApi);
 app.use('/api/events', eventsApi);
 app.use('/api/groups', groupsApi);
+app.use('/api/auth', authApi);
 
 // eslint-disable-next-line no-console
 app.listen(PORT, () => console.log(`👩‍👧‍👦 Server started at ${PORT} port 👩‍👧‍👦`));

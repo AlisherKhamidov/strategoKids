@@ -1,3 +1,4 @@
+
 import React, { FormEvent, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store";
@@ -11,6 +12,8 @@ function Groups(): JSX.Element {
   const [title, setTitle] = useState("");
   const [img, setImg] = useState("");
   const [info, setInfo] = useState("");
+
+
 
   const dispatch = useAppDispatch();
 
@@ -30,6 +33,7 @@ function Groups(): JSX.Element {
   return (
     <>
       <h1>Groups</h1>
+
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -66,6 +70,7 @@ function Groups(): JSX.Element {
         </ul>
       </div>
       <div>Занятия проводятся один/два/три раза в неделю согласно расписанию</div>
+
     </>
   );
 }

@@ -1,10 +1,13 @@
-import React from "react";
-import Group from "./types/Group";
+
+import React from 'react';
+import Group from './types/Group';
+
 
 interface GroupPops {
   group: Group;
   handleRemove: (group: Group) => void;
 }
+
 
 function GroupCard({ group, handleRemove }: GroupPops): JSX.Element {
   return (
