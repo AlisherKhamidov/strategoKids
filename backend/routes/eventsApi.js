@@ -13,15 +13,13 @@ router
       .catch((error) => res.status(500).json({ message: error.message }));
   })
   .post((req, res) => {
-    console.log('post');
     const {
-      title, description, photo,
+      title, description, photo, isTournament,
     } = req.body;
-    console.log(title, description);
 
     // if (kidName && birthDate) {
     Event.create({
-      title, description, photo,
+      title, description, photo, isTournament,
 
     })
       .then((newEvent) => res
@@ -33,5 +31,37 @@ router
   },
     //   }
   );
+router.delete('/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    await Event.destroy({ where: { id } }).then((deletedEvent) => (deletedEvent
+      ? res.json({ id })
+      : res.status(404).json({ deleted: false })));
+  } catch (error) {
+    res.json({ success: false });
+  }
+});
+router.put('/:id', async (req, res) => {
+  const { id } = req.params;
+  const {
+    title, description, photo, isTournament,
+  } = req.body;
+  if (title && description && photo && isTournament) {
+    Event.update(
+      {
+        title, description, photo, isTournament,
+      },
+      { where: { id }, raw: true, returning: true },
+    )
+      .then((updatedData) => {
+        const [, [updatedEvent]] = updatedData;
+
+        return res.json(updatedEvent);
+      })
+      .catch((error) => res.status(500).json({ message: error.message }));
+  } else {
+    res.status(400).json({ updated: false });
+  }
+});
 
 module.exports = router;

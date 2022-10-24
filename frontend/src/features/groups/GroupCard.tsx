@@ -1,23 +1,20 @@
-
 import React from 'react';
 import Group from './types/Group';
-
 
 interface GroupPops {
   group: Group;
   handleRemove: (group: Group) => void;
 }
 
-
 function GroupCard({ group, handleRemove }: GroupPops): JSX.Element {
   return (
     <div className="card">
       <div
         className="btn"
-        style={{ display: "flex", justifyContent: "flex-end" }}
+        style={{ display: 'flex', justifyContent: 'flex-end' }}
       >
-        <button className="ui icon button" onClick={() => handleRemove(group)}>
-          <i className="trash icon"></i>
+        <button type="button" className="ui icon button" onClick={() => handleRemove(group)}>
+          <i className="trash icon" />
         </button>
       </div>
       <div className="content">{group.title}</div>

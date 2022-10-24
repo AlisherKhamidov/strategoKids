@@ -9,12 +9,18 @@ module.exports = {
       },
       title: {
         type: Sequelize.TEXT,
+        allowNull: false,
       },
       description: {
         type: Sequelize.TEXT,
+        allowNull: false,
       },
       photo: {
         type: Sequelize.TEXT,
+      },
+      isTournament: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false,
       },
       createdAt: {
         allowNull: false,
