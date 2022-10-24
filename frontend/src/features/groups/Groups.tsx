@@ -2,10 +2,11 @@
 import React, { FormEvent, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store";
-import { loadGroups, createGroup, deleteGroup } from "./groupsSlice";
+import { loadGroups, createGroup, deleteGroup, updateGroup } from "./groupsSlice";
 import { useAppDispatch } from "../../store";
 import GroupCard from "./GroupCard";
 import Group from "./types/Group";
+
 
 function Groups(): JSX.Element {
   const groupsList = useSelector((state: RootState) => state.groups.groupsArr);
@@ -29,6 +30,10 @@ function Groups(): JSX.Element {
   const handleRemove = (groupToDelete: Group): void => {
     dispatch(deleteGroup(groupToDelete.id));
   };
+
+  const handleUpdate = (newGroup: Group): void => {
+    dispatch(updateGroup(newGroup))
+  }
 
   return (
     <>
@@ -59,7 +64,7 @@ function Groups(): JSX.Element {
       <h3>Группы формируются в зависимости от уже имеющегося опыта:</h3>
       <div className="ui cards">
         {groupsList.map((group) => (
-          <GroupCard key={group.id} group={group} handleRemove={handleRemove} />
+          <GroupCard key={group.id} group={group} handleRemove={handleRemove} handleUpdate={handleUpdate}/>
         ))}
       </div>
       <div>
