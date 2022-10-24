@@ -17,7 +17,7 @@ const removeHead = require('../middleware/removeHead');
 // формирование лог файла
 const accessLogStream = fs.createWriteStream(
   path.join(__dirname, 'access.log'),
-  { flags: 'a' }
+  { flags: 'a' },
 );
 
 const serverConfig = (app) => {
@@ -32,6 +32,12 @@ const serverConfig = (app) => {
 
   // Установка статики
   app.use(express.static('public'));
+
+  app.use(
+    express.static(
+      path.join(__dirname, '../../frontend/build/'),
+    ),
+  );
 
   // Применение своей промежуточной функции
   app.use(removeHead); // минус заголовок

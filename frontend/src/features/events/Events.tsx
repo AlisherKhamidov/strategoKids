@@ -1,9 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unused-expressions */
-import React, { useEffect, useState } from 'react';
+// commented > import React, { useEffect, useState } from 'react';
 
 export default function Events(): JSX.Element {
-    const [state, setState] = useState({});
-
+    // commented >
+    // const [state, setState] = useState({});
+    // commented <
     // function handleSubmit(event) {
     //     event.preventDefault();
     //     const { title, description, photo } = event.target;
@@ -32,11 +33,14 @@ export default function Events(): JSX.Element {
     //         };
     //     }
     // , [state]);
-    useEffect(() => {
-        async function handleSubmit() : Promise<any> {
-            fetch('/api/events');
-        }
-    });
+
+    // commented >
+    // useEffect(() => {
+    //     async function handleSubmit() : Promise<any> {
+    //         fetch('/api/events');
+    //     }
+    // });
+    // commented <
 
   return (
     <>
