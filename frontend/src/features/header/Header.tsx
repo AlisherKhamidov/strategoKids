@@ -4,7 +4,7 @@ import headerStyle from './Header.module.css';
 export default function Header(): JSX.Element {
   return (
     <nav className={headerStyle.container}>
-      <Link className={headerStyle.link} to="/main">Главная</Link>{' '}
+      <Link className={headerStyle.link} to="/">Главная</Link>{' '}
       <Link className={headerStyle.link} to="/schedule">Расписание</Link>{' '}
       <Link className={headerStyle.link} to="/application">Подача заявки</Link>{' '}
       <Link className={headerStyle.link} to="/events">События</Link>

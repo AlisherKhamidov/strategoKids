@@ -11,13 +11,15 @@ interface CardProps {
   link?:string;
 }
 
-Card.defaultProps = {
+TournamentCard.defaultProps = {
   description: '',
   modal: true,
   link: '/schedule',
 };
 
-export default function Card({ photo, title, description = '', modal = true, link = '/schedule' }:CardProps): JSX.Element {
+export default function TournamentCard({
+  photo, title, description, modal, link = '/schedule'
+}:CardProps): JSX.Element {
   const [toggle, setToggle] = useState(true);
   const navigate = useNavigate();
   const toggleHandler = (prev:boolean) => () => setToggle(!prev);

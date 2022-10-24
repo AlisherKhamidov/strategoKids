@@ -1,19 +1,15 @@
-
-import React, { FormEvent, useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { RootState } from "../../store";
-import { loadGroups, createGroup, deleteGroup } from "./groupsSlice";
-import { useAppDispatch } from "../../store";
-import GroupCard from "./GroupCard";
-import Group from "./types/Group";
+import React, { FormEvent, useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { RootState, useAppDispatch } from '../../store';
+import { loadGroups, createGroup, deleteGroup } from './groupsSlice';
+import GroupCard from './GroupCard';
+import Group from './types/Group';
 
 function Groups(): JSX.Element {
   const groupsList = useSelector((state: RootState) => state.groups.groupsArr);
-  const [title, setTitle] = useState("");
-  const [img, setImg] = useState("");
-  const [info, setInfo] = useState("");
-
-
+  const [title, setTitle] = useState('');
+  const [img, setImg] = useState('');
+  const [info, setInfo] = useState('');
 
   const dispatch = useAppDispatch();
 
