@@ -1,17 +1,20 @@
 import React, { ChangeEvent, FormEvent, useState } from "react";
+import User from "../auth/types/User";
 import Group from "./types/Group";
 
 interface GroupPops {
   group: Group;
   handleRemove: (group: Group) => void;
   handleUpdate: (newGroup: Group) => void;
+  user: User;
 }
 
 function GroupCard({
   group,
   handleRemove,
   handleUpdate,
-}: // admin,
+  user,
+}: 
 GroupPops): JSX.Element {
   const [edit, setEdit] = useState(false);
   const [title, setTitle] = useState(group.title);
@@ -50,6 +53,7 @@ GroupPops): JSX.Element {
         </form>
       )} */}
       <div className="card">
+          {user.isAdmin && 
         <div
           className="action-buttons"
           style={{ display: "flex", justifyContent: "space-between" }}
@@ -64,7 +68,7 @@ GroupPops): JSX.Element {
           >
             <i className="trash icon" />
           </button>
-        </div>
+          </div>}
         <div className="content">{group.title}</div>
         {edit && (
           <form onSubmit={handleSubmit} style={{display: 'flex', flexDirection: 'column'}}>

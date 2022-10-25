@@ -1,14 +1,13 @@
 import React, { FormEvent, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState, useAppDispatch } from '../../store';
-import { loadGroups, createGroup, deleteGroup } from './groupsSlice';
+import { loadGroups, createGroup, deleteGroup, updateGroup } from './groupsSlice';
 import GroupCard from './GroupCard';
 import Group from './types/Group';
 
 function Groups(): JSX.Element {
   const groupsList = useSelector((state: RootState) => state.groups.groupsArr);
-  // const admin = useSelector((state: RootState)=> state.auth.user) // isAdmin
-  // console.log(admin);
+  const user = useSelector((state: RootState)=> state.auth.user)
   
   const [title, setTitle] = useState('');
   const [img, setImg] = useState('');
@@ -29,9 +28,9 @@ function Groups(): JSX.Element {
     dispatch(deleteGroup(groupToDelete.id));
   };
 
-  // const handleUpdate = (newGroup: Group): void => {
-  //   dispatch(updateGroup(newGroup));
-  // };
+  const handleUpdate = (newGroup: Group): void => {
+    dispatch(updateGroup(newGroup));
+  };
 
   return (
     <>
@@ -67,7 +66,7 @@ function Groups(): JSX.Element {
             group={group}
             handleRemove={handleRemove}
             handleUpdate={handleUpdate}
-            // admin={admin}
+            user={user!}
           />
         ))}
       </div>
