@@ -7,6 +7,7 @@ const express = require('express');
 const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
+const { resLocals, getUser } = require('../middleware/auth');
 
 // конфигурации
 const sessionConfig = require('./sessionConfig');
@@ -45,6 +46,8 @@ const serverConfig = (app) => {
 
   // Установка для работы сессий
   app.use(session(sessionConfig));
+  app.use(resLocals);
+  app.use(getUser);
 };
 
 module.exports = serverConfig;
