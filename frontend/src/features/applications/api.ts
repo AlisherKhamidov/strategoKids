@@ -9,6 +9,11 @@ export default async function createApplication(data: Data): Promise<Data> {
         },
     });
     // console.log(response);
+    if (response.status >= 400) {
+        const { error } = await response.json();
+        throw error;
+      }
     const result = await response.json();
+    console.log(result);
     return result;
 }

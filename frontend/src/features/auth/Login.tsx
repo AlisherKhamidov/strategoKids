@@ -89,7 +89,6 @@ function Login(): JSX.Element {
             Войти
             </button>
           </div>
-          {/* <div className={style2.error} /> */}
           </form>
       </div>
     );
