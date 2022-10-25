@@ -1,7 +1,7 @@
 import React, { FormEvent, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState, useAppDispatch } from '../../store';
-import { loadGroups, createGroup, deleteGroup, updateGroup } from './groupsSlice';
+import { loadGroups, createGroup, deleteGroup } from './groupsSlice';
 import GroupCard from './GroupCard';
 import Group from './types/Group';
 
@@ -26,9 +26,9 @@ function Groups(): JSX.Element {
     dispatch(deleteGroup(groupToDelete.id));
   };
 
-  const handleUpdate = (newGroup: Group): void => {
-    dispatch(updateGroup(newGroup));
-  };
+  // const handleUpdate = (newGroup: Group): void => {
+  //   dispatch(updateGroup(newGroup));
+  // };
 
   return (
     <>

@@ -28,7 +28,6 @@ export async function deleteGroup(id: GroupId): Promise<void> {
     });
 }
 
-
 export async function updateGroup(group: Group): Promise<void> {
   await fetch(`/api/groups/${group.id}`, {
     method: 'PUT',
@@ -36,5 +35,5 @@ export async function updateGroup(group: Group): Promise<void> {
     headers: {
       'Content-Type': 'application/json',
     },
-  })
+  });
 }
