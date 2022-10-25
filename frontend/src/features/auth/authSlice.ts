@@ -16,12 +16,17 @@ const initialState: AuthState = {
   export const register = createAsyncThunk(
     'auth/register',
     async (data: RegisterData) => {
+      // eslint-disable-next-line no-console
+      console.log(data.phone.length);
       if (data.password !== data.passwordRepeat) {
         throw new Error('Пароли не совпадают');
       }
       if (!data.name.trim() || !data.password.trim() || !data.email.trim() || !data.phone.trim()) {
         throw new Error('Не все поля заполнены');
       }
+      // if (data.phone.length !== 11) {
+      //   throw new Error('Некорректный номер телефона');
+      // }
 
       return api.register(data);
     }

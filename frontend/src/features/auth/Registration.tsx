@@ -1,10 +1,13 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { Button, Form, Input } from 'semantic-ui-react';
 import { useAppDispatch } from '../../store';
 import { register, resetRegisterFormError } from './authSlice';
 import style from '../applications/Application.module.css';
+import style2 from './Auth.module.css';
+import closed from './images/closed_eye.png';
+import open from './images/open_eye.png';
 import { selectRegisterFormError } from './selectors';
 
 function Registration(): JSX.Element {
@@ -16,6 +19,15 @@ function Registration(): JSX.Element {
     const [phone, setPhone] = React.useState('');
     const [password, setPassword] = React.useState('');
     const [passwordRepeat, setPasswordRepeat] = React.useState('');
+    const [first, setFirst] = React.useState(false);
+    const [second, setSecond] = React.useState(false);
+
+  const toggleFirst = (): void => {
+    setFirst((prev) => !prev);
+  };
+  const toggleSecond = (): void => {
+    setSecond((prev) => !prev);
+  };
 
     const handleSubmit = React.useCallback(
         async (event: React.FormEvent) => {
@@ -32,7 +44,7 @@ function Registration(): JSX.Element {
           );
 
           if (register.fulfilled.match(dispatchResult)) {
-            navigate('/main');
+            navigate('/');
           }
         },
         [dispatch, navigate, name, email, phone, password, passwordRepeat]
@@ -75,66 +87,41 @@ function Registration(): JSX.Element {
       );
 
   return (
-    <div className={style.formochka}>
-    {error && (
+    <div className={style.form__container}>
+      <form className={style.forma} onSubmit={handleSubmit}>
+      {error && (
         <div className="" style={{ display: 'block' }}>
           {error}
         </div>
       )}
-    <Form onSubmit={handleSubmit}>
-    <Form.Group widths="equal">
-      <Form.Field
-        id="form-input-control-first-name"
-        control={Input}
-        label="Ваше имя"
-        placeholder="Введите ваше имя"
-      >
-        <input value={name} onChange={handleNameChange} required />
-      </Form.Field>
-      <Form.Field
-        id="form-input-control-last-name"
-        control={Input}
-        label="Email"
-        placeholder="Введите ваш Email"
-      >
-          <input value={email} type="email" onChange={handleEmailChange} required />
-      </Form.Field>
-      <Form.Field
-        id="form-input-control-last-name"
-        control={Input}
-        label="Телефон"
-        placeholder="+7-000-000-00-00"
-      >
-         <input value={phone} onChange={handlePhoneChange} required />
-      </Form.Field>
-      <Form.Field
-        id="form-input-control-last-name"
-        control={Input}
-        label="Пароль"
-        placeholder="Придумайте пароль"
-        type="password"
-      >
-          <input value={password} onChange={handlePasswordChange} required />
-      </Form.Field>
-      <Form.Field
-        id="form-input-control-last-name"
-        control={Input}
-        label="Подтвердите пароль"
-        placeholder="Пароль"
-        type="password"
-      >
-          <input value={passwordRepeat} onChange={handlePasswordRepeatChange} required />
-          {/* <a href="#" className="" onClick=""></a> */}
-      </Form.Field>
-    </Form.Group>
-    <Form.Field
-      id="form-input-control-last-name"
-      control={Button}
-      content="Зарегистрироваться"
-      className={style.my_button}
-      type="submit"
-    />
-    </Form>
+        <label className={style.label} htmlFor="name">
+          <span className={style.label__text}>Ваше имя</span>
+          <input className={style.input} id="name" value={name} onChange={handleNameChange} required placeholder="Введите ваше имя" />
+        </label>
+        <label className={style.label} htmlFor="Email">
+          <span className={style.label__text}>Email</span>
+          <input className={style.input} id="Email" value={email} type="email" onChange={handleEmailChange} required placeholder="Введите ваш Email" />
+        </label>
+        <label className={style.label} htmlFor="phone">
+          <span className={style.label__text}>Телефон</span>
+          <input className={style.input} id="phone" value={phone} onChange={handlePhoneChange} required placeholder="+7-000-000-00-00" />
+        </label>
+        <label className={style.label} htmlFor="pass">
+          <span className={style.label__text}>Пароль</span>
+          <input className={style.input} id="pass" type={first ? 'text' : 'password'} value={password} onChange={handlePasswordChange} required placeholder="Придумайте пароль" />
+          <img onClick={() => toggleFirst()} className={style2.closed} src={first ? open : closed} alt="eye" />
+        </label>
+        <label className={style.label} htmlFor="repPass">
+          <span className={style.label__text}>Подтвердите пароль</span>
+          <input className={style.input} id="repPass" type={second ? 'text' : 'password'} value={passwordRepeat} onChange={handlePasswordRepeatChange} required placeholder="Пароль" />
+          <img onClick={() => toggleSecond()} className={style2.closed} src={second ? open : closed} alt="eye" />
+        </label>
+        <div className={style.btnPosition}>
+          <button className={style.button} type="submit">
+          Отправить заявку
+          </button>
+        </div>
+      </form>
     </div>
   );
 }
