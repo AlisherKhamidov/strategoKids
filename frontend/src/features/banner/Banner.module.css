@@ -68,6 +68,7 @@
 
 .whiteBtn:hover {
   color: #ED6A1D;
+  cursor: pointer;
 }
 
 .buttonRow {

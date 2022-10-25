@@ -1,0 +1,12 @@
+.closed {
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    top: 40px;
+    left: 325px;
+}
+
+.closed:hover {
+    cursor: pointer;
+    transform: scale(1.2);
+}

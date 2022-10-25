@@ -35,7 +35,7 @@ function App(): JSX.Element {
     <div className="App">
       <Routes>
         <Route element={<Layout />}>
-          <Route path="/main" element={<MainPage />} />
+          <Route path="/" element={<MainPage />} />
           <Route path="/application" element={<Application />} />
           <Route path="/events" element={<Events />} />
           <Route path="/groups" element={<Groups />} />
