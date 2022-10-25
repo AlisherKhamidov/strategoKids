@@ -42,8 +42,8 @@ authRouter.post('/register', async (req, res) => {
   });
 
   // кладём id нового пользователя в хранилище сессии (сразу логиним пользователя)
-  req.session.user = { id: existingUser.id, isAdmin: existingUser.isAdmin };
-  res.json({ id: user.id, phone: user.phone });
+  req.session.user = { id: existingUser?.id, isAdmin: existingUser?.isAdmin };
+  res.json({ id: user?.id, phone: user.phone });
 });
 
 authRouter.post('/login', async (req, res) => {

@@ -58,7 +58,7 @@ export default function Events(): JSX.Element {
       </form>
       <h1>Events</h1>
       <div className="ui cards">
-      { eventsList.map((event,) => (
+      { eventsList.map((event) => (
       <EventCard
         key={event.id}
         event={event}
