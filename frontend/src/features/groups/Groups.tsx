@@ -7,6 +7,9 @@ import Group from './types/Group';
 
 function Groups(): JSX.Element {
   const groupsList = useSelector((state: RootState) => state.groups.groupsArr);
+  // const admin = useSelector((state: RootState)=> state.auth.user) // isAdmin
+  // console.log(admin);
+  
   const [title, setTitle] = useState('');
   const [img, setImg] = useState('');
   const [info, setInfo] = useState('');
@@ -63,7 +66,8 @@ function Groups(): JSX.Element {
             key={group.id}
             group={group}
             handleRemove={handleRemove}
-            // handleUpdate={handleUpdate}
+            handleUpdate={handleUpdate}
+            // admin={admin}
           />
         ))}
       </div>
