@@ -6,14 +6,14 @@ interface GroupPops {
   group: Group;
   handleRemove: (group: Group) => void;
   handleUpdate: (newGroup: Group) => void;
-  user: User;
+  isAdmin: User;
 }
 
 function GroupCard({
   group,
   handleRemove,
   handleUpdate,
-  user,
+  isAdmin,
 }: 
 GroupPops): JSX.Element {
   const [edit, setEdit] = useState(false);
@@ -53,7 +53,7 @@ GroupPops): JSX.Element {
         </form>
       )} */}
       <div className="card">
-          {user.isAdmin && 
+          {isAdmin.isAdmin && 
         <div
           className="action-buttons"
           style={{ display: "flex", justifyContent: "space-between" }}

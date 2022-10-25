@@ -7,7 +7,7 @@ import Group from './types/Group';
 
 function Groups(): JSX.Element {
   const groupsList = useSelector((state: RootState) => state.groups.groupsArr);
-  const user = useSelector((state: RootState)=> state.auth.user)
+  const isAdmin = useSelector((state: RootState)=> state.auth.user)
   
   const [title, setTitle] = useState('');
   const [img, setImg] = useState('');
@@ -35,7 +35,7 @@ function Groups(): JSX.Element {
   return (
     <>
       <h1>Groups</h1>
-
+    { isAdmin?.isAdmin && 
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -58,6 +58,7 @@ function Groups(): JSX.Element {
         />
         <button type="submit">OK</button>
       </form>
+        }
       <h3>Группы формируются в зависимости от уже имеющегося опыта:</h3>
       <div className="ui cards">
         {groupsList.map((group) => (
@@ -66,7 +67,7 @@ function Groups(): JSX.Element {
             group={group}
             handleRemove={handleRemove}
             handleUpdate={handleUpdate}
-            user={user!}
+            isAdmin={isAdmin!}
           />
         ))}
       </div>
