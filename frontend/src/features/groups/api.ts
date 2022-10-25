@@ -21,9 +21,20 @@ export async function createGroup(group: {
   const result = await response.json();
   return result.newGroup;
 }
-// /jjjj
+
 export async function deleteGroup(id: GroupId): Promise<void> {
     await fetch(`/api/groups/${id}`, {
       method: 'DELETE',
     });
+}
+
+
+export async function updateGroup(group: Group): Promise<void> {
+  await fetch(`/api/groups/${group.id}`, {
+    method: 'PUT',
+    body: JSON.stringify(group),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
 }

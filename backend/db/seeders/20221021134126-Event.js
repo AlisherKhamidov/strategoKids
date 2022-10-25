@@ -6,6 +6,7 @@ module.exports = {
       photo: 'wertyuijkl;',
       createdAt: new Date(),
       updatedAt: new Date(),
+      isTournament: true,
     },
     {
       title: 'Турнир 2',
@@ -13,6 +14,7 @@ module.exports = {
       photo: 'sdgwerfgwreg;',
       createdAt: new Date(),
       updatedAt: new Date(),
+      isTournament: true,
     },
     {
       title: 'Турнир 3',
@@ -20,6 +22,7 @@ module.exports = {
       photo: 'dfwerf',
       createdAt: new Date(),
       updatedAt: new Date(),
+      isTournament: true,
     },
     ], {});
   },

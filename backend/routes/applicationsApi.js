@@ -15,6 +15,9 @@ router
     const {
       kidName, birthDate, parentName, phone, experience,
     } = req.body;
+    if (phone.length < 11) {
+      res.status(400).json({ message: 'Заявка создана' });
+    }
     // console.log(kidName, birthDate, parentName, phone, experience);
     if (kidName && birthDate) {
       Application.create({

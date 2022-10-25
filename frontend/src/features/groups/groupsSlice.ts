@@ -1,9 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-
-// import { stat } from 'fs/promises';
-
 import * as api from './api';
-import { GroupId } from './types/Group';
+import Group, { GroupId } from './types/Group';
 import GroupsListState from './types/GroupsListState';
 
 const initialState: GroupsListState = {
@@ -24,6 +21,11 @@ export const deleteGroup = createAsyncThunk('groups/deleteGroup', async (id: Gro
   return id;
 });
 
+export const updateGroup = createAsyncThunk('groups/updateGroup', async (newGroup: Group) => {
+  await api.updateGroup(newGroup);
+  return newGroup;
+});
+
 const groupsSlice = createSlice({
   name: 'groups',
   initialState,
@@ -38,6 +40,12 @@ const groupsSlice = createSlice({
     })
     .addCase(deleteGroup.fulfilled, (state, action) => {
       state.groupsArr = state.groupsArr.filter((gr) => gr.id !== action.payload);
+    })
+    .addCase(updateGroup.fulfilled, (state, action) => {
+      state.groupsArr = state.groupsArr.map((gr) =>
+      gr.id === action.payload.id ?
+      { ...gr, title: action.payload.title, img: action.payload.img, info: action.payload.info }
+      : gr);
     });
   },
 });
