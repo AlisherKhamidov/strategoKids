@@ -59,12 +59,12 @@ function Login(): JSX.Element {
       );
     return (
       <div className={style.form__container}>
-        {error && (
+          <form className={style.forma} onSubmit={handleSubmit}>
+          {error && (
             <div className="" style={{ display: 'block' }}>
               {error}
             </div>
           )}
-          <form className={style.forma} onSubmit={handleSubmit}>
           <label className={style.label} htmlFor="phone">
           <span className={style.label__text}>Телефон</span>
           <input
@@ -89,7 +89,6 @@ function Login(): JSX.Element {
             Войти
             </button>
           </div>
-          {/* <div className={style2.error} /> */}
           </form>
       </div>
     );

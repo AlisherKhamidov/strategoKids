@@ -88,12 +88,12 @@ function Registration(): JSX.Element {
 
   return (
     <div className={style.form__container}>
-    {error && (
+      <form className={style.forma} onSubmit={handleSubmit}>
+      {error && (
         <div className="" style={{ display: 'block' }}>
           {error}
         </div>
       )}
-      <form className={style.forma} onSubmit={handleSubmit}>
         <label className={style.label} htmlFor="name">
           <span className={style.label__text}>Ваше имя</span>
           <input className={style.input} id="name" value={name} onChange={handleNameChange} required placeholder="Введите ваше имя" />

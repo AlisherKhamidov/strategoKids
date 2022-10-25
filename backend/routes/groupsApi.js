@@ -39,12 +39,11 @@ groupsApi.put('/:id', (req, res) => {
     const { title, img, info } = req.body;
 
     if (title && img && info) {
-      Group.update({ title, img, info }, { where: { id } }).then((updatedData) => {
-      // console.log(updatedData);
-        const [, [updatedGroup]] = updatedData;
-
-        return res.json(updatedGroup);
-      });
+      Group.update({ title, img, info }, { where: { id }, raw: true, returning: true })
+        .then((updatedData) => {
+          const [, [updatedGroup]] = updatedData;
+          return res.json(updatedGroup);
+        });
     }
   } catch (error) {
     res.json({ success: false });

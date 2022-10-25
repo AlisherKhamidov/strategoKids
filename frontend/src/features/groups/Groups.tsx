@@ -1,12 +1,14 @@
 import React, { FormEvent, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState, useAppDispatch } from '../../store';
-import { loadGroups, createGroup, deleteGroup } from './groupsSlice';
+import { loadGroups, createGroup, deleteGroup, updateGroup } from './groupsSlice';
 import GroupCard from './GroupCard';
 import Group from './types/Group';
 
 function Groups(): JSX.Element {
   const groupsList = useSelector((state: RootState) => state.groups.groupsArr);
+  const isAdmin = useSelector((state: RootState)=> state.auth.user)
+  
   const [title, setTitle] = useState('');
   const [img, setImg] = useState('');
   const [info, setInfo] = useState('');
@@ -26,14 +28,14 @@ function Groups(): JSX.Element {
     dispatch(deleteGroup(groupToDelete.id));
   };
 
-  // const handleUpdate = (newGroup: Group): void => {
-  //   dispatch(updateGroup(newGroup));
-  // };
+  const handleUpdate = (newGroup: Group): void => {
+    dispatch(updateGroup(newGroup));
+  };
 
   return (
     <>
       <h1>Groups</h1>
-
+    { isAdmin?.isAdmin && 
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -56,6 +58,7 @@ function Groups(): JSX.Element {
         />
         <button type="submit">OK</button>
       </form>
+        }
       <h3>Группы формируются в зависимости от уже имеющегося опыта:</h3>
       <div className="ui cards">
         {groupsList.map((group) => (
@@ -63,7 +66,8 @@ function Groups(): JSX.Element {
             key={group.id}
             group={group}
             handleRemove={handleRemove}
-            // handleUpdate={handleUpdate}
+            handleUpdate={handleUpdate}
+            isAdmin={isAdmin!}
           />
         ))}
       </div>
