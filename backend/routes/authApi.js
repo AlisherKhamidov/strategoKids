@@ -13,6 +13,7 @@ authRouter.get('/user', async (req, res) => {
         email: user.email,
         phone: user.phone,
         password: user.password,
+        isAdmin: user.isAdmin,
       },
     });
   } else {
@@ -24,7 +25,9 @@ authRouter.post('/register', async (req, res) => {
     name, email, phone, password,
   } = req.body;
 
-  const existingUser = await User.findOne({ where: { name } });
+  // console.log(req.body);
+
+  const existingUser = await User.findOne({ where: { phone } });
   if (existingUser) {
     res.status(422).json({ error: 'Такой пользователь уже существует' });
     return;
@@ -39,20 +42,20 @@ authRouter.post('/register', async (req, res) => {
   });
 
   // кладём id нового пользователя в хранилище сессии (сразу логиним пользователя)
-  req.session.userId = user.id;
-  res.json({ id: user.id, name: user.name });
+  req.session.user = { id: existingUser.id, isAdmin: existingUser.isAdmin };
+  res.json({ id: user.id, phone: user.phone });
 });
 
 authRouter.post('/login', async (req, res) => {
-  const { name, password } = req.body;
-  const existingUser = await User.findOne({ where: { name } });
+  const { phone, password } = req.body;
+  const existingUser = await User.findOne({ where: { phone } });
 
   // проверяем, что такой пользователь есть в БД и пароли совпадают
   if (existingUser && (await bcrypt.compare(password, existingUser.password))) {
     // кладём id нового пользователя в хранилище сессии (логиним пользователя)
-    req.session.userId = existingUser.id;
+    req.session.user = { id: existingUser.id, isAdmin: existingUser.isAdmin };
     req.session.user = existingUser;
-    res.json({ id: existingUser.id, name: existingUser.name });
+    res.json({ id: existingUser.id, phone: existingUser.phone });
   } else {
     res.status(401).json({ error: 'Такого пользователя не существует либо пароли не совпадают' });
   }
@@ -62,6 +65,7 @@ authRouter.post('/logout', (req, res) => {
   req.session.destroy(() => {
     res.json({ success: true });
   });
+  res.clearCookie('user_sid');
 });
 
 module.exports = authRouter;
