@@ -2,14 +2,13 @@
   padding: 30px;
   margin-top: 20px;
   display: flex;
-  align-items: flex-start;
-  flex-wrap: nowrap;
+  justify-content: space-between;
+  flex-wrap: wrap;
   height: 100%;
-  
 }
 
 
-.whiteBtn {
+/* .whiteBtn {
   background-color: white;
   border: none;
   color: #9e9999;
@@ -19,7 +18,7 @@
   font-size: 16px;
   margin: 4px 4px 10px 8px;
   border-radius: 10px;
-}
+} */
 
 .whiteBtn:hover {
   background-color: #ED6A1D;

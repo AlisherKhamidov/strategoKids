@@ -18,9 +18,12 @@ const resLocals = (req, res, next) => {
 
 // ищем юзера в Бд по айди
 const getUser = async (req, res, next) => {
-  if (req.session.userId) {
-    res.locals.user = await User.findByPk(Number(req.session.userId), { raw: true });
-  }
+  const { userId } = req.session;
+  const user = userId && (await User.findByPk(userId));
+  res.locals.user = user;
+  // if (req.session.userId) {
+  //   res.locals.user = await User.findByPk(Number(req.session.userId), { raw: true });
+  // }
   next();
 };
 
