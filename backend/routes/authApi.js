@@ -55,7 +55,7 @@ authRouter.post('/login', async (req, res) => {
     // кладём id нового пользователя в хранилище сессии (логиним пользователя)
     req.session.user = { id: existingUser.id, isAdmin: existingUser.isAdmin };
     req.session.user = existingUser;
-    res.json({ id: existingUser.id, phone: existingUser.phone });
+    res.json({ id: existingUser.id, phone: existingUser.phone, isAdmin: req.session.user.isAdmin });
   } else {
     res.status(401).json({ error: 'Такого пользователя не существует либо пароли не совпадают' });
   }

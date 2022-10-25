@@ -7,6 +7,7 @@ import headerStyle from './Header.module.css';
 
 export default function Header(): JSX.Element {
   const user = useSelector((globalState: RootState) => globalState.auth.user);
+  console.log(user)
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
