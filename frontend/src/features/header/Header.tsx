@@ -20,6 +20,7 @@ export default function Header(): JSX.Element {
             navigate('/');
         }
         if (logout.rejected.match(dispatchResult)) {
+          // eslint-disable-next-line no-console
           console.error(dispatchResult.error.message);
         }
     },

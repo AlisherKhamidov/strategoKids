@@ -22,12 +22,17 @@ module.exports = (sequelize, DataTypes) => {
     },
     title: {
       type: DataTypes.TEXT,
+      allowNull: false,
     },
     description: {
       type: DataTypes.TEXT,
     },
     photo: {
       type: DataTypes.TEXT,
+    },
+    isTournament: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
     },
   }, {
     sequelize,

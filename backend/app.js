@@ -1,4 +1,5 @@
 require('dotenv').config();
+const path = require('path');
 
 const express = require('express');
 
@@ -23,6 +24,12 @@ app.use('/api/applications', applicationApi);
 app.use('/api/events', eventsApi);
 app.use('/api/groups', groupsApi);
 app.use('/api/auth', authApi);
+
+app.get('*', (req, res) => {
+  res.sendFile(
+    path.join(__dirname, '../frontend/build/index.html'),
+  );
+});
 
 // eslint-disable-next-line no-console
 app.listen(PORT, () => console.log(`👩‍👧‍👦 Server started at ${PORT} port 👩‍👧‍👦`));

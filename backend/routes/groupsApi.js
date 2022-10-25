@@ -24,9 +24,28 @@ groupsApi.post('/', (req, res) => {
 groupsApi.delete('/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    await Group.destroy({ where: { id } }).then((deletedGroup) => (deletedGroup
-      ? res.json({ id })
-      : res.status(404).json({ deleted: false })));
+    await Group.destroy({ where: { id } })
+      .then((deletedGroup) => (
+        deletedGroup ? res.json({ id }) : res.status(404).json({ deleted: false })));
+  } catch (error) {
+    res.json({ success: false });
+  }
+});
+
+groupsApi.put('/:id', (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const { title, img, info } = req.body;
+
+    if (title && img && info) {
+      Group.update({ title, img, info }, { where: { id } }).then((updatedData) => {
+      // console.log(updatedData);
+        const [, [updatedGroup]] = updatedData;
+
+        return res.json(updatedGroup);
+      });
+    }
   } catch (error) {
     res.json({ success: false });
   }
