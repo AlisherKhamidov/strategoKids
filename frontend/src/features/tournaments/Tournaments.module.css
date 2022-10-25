@@ -1,6 +1,15 @@
 .tournaments {
   justify-content: flex;
 }
+.container2 {
+  padding: 30px;
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  height: 100%;
+  background-color: #BDE3FF;
+  justify-content: center;
+}
 
 .title {
   margin: 20px;
@@ -18,11 +27,19 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+  /* background-color: #BDE3FF; */
+}
+
+.container3 {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: #BDE3FF;
 }
 
 .orangeButton {
   display: flex;
-  background-color: #fcbf0b;
+  background-color: #fcbf0b; 
   border: none;
   color: black;
   padding: 30px;
@@ -32,5 +49,11 @@
   border-radius: 20px;
   align-self:flex-end;
   margin: 30px;
+  margin-right: 200px;
 }
 
+
+.orangeButton:hover {
+  background-color:#2D53A1; 
+  color: white;
+}
