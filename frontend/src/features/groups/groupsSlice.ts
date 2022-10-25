@@ -41,11 +41,18 @@ const groupsSlice = createSlice({
     .addCase(deleteGroup.fulfilled, (state, action) => {
       state.groupsArr = state.groupsArr.filter((gr) => gr.id !== action.payload);
     })
+    // .addCase(updateGroup.fulfilled, (state, action) => {
+    //   state.groupsArr = state.groupsArr.map((gr) =>
+    //   gr.id === action.payload.id ?
+    //   { ...gr, title: action.payload.title, img: action.payload.img, info: action.payload.info }
+    //   : gr);
+    // });
     .addCase(updateGroup.fulfilled, (state, action) => {
-      state.groupsArr = state.groupsArr.map((gr) =>
-      gr.id === action.payload.id ?
-      { ...gr, title: action.payload.title, img: action.payload.img, info: action.payload.info }
-      : gr);
+      const oldGroup = state.groupsArr.find(
+        (x) => x.id === action.payload.id
+      );
+
+      Object.assign(oldGroup!, action.payload);
     });
   },
 });
