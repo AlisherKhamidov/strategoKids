@@ -6,6 +6,8 @@ DS_store
 #sessions
 .sessions
 
+.sessions
+
 logs
 *.log
 npm-debug.log*

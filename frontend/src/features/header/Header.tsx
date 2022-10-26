@@ -45,7 +45,7 @@ export default function Header(): JSX.Element {
           <Link className={headerStyle.link} to="/application">Подача заявки</Link>{' '}
           <Link className={headerStyle.link} to="/events">События</Link>
           <Link className={headerStyle.link} to="/groups">Группы</Link>
-          {user?.isAdmin && <Link className={headerStyle.link} to="/parents">Кабинет родителя</Link>}
+          {!user?.isAdmin && <Link className={headerStyle.link} to="/parents">Кабинет родителя</Link>}
           <Link className={headerStyle.link} to="/" onClick={handleLogout}>Выйти</Link>
         </div>
         ) : (

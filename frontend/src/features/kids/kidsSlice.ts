@@ -10,12 +10,12 @@ const initialState: EventsListState = {
 export const loadKids = createAsyncThunk('kids/loadKids', () =>
   api.loadKids()
 );
-//  export const addEvent = createAsyncThunk('events/addEvent',
-// async (event: { title: string, description: string, photo: string, isTournament: boolean }) => {
-//  const newEvent = await api.addEvent(event);
-//  return newEvent;
-// }
-// );
+ export const addKid = createAsyncThunk('kids/addKid',
+async (kid: Kid) => {
+ const newKid = await api.addKid(kid);
+ return newKid;
+}
+);
 // export const deleteEvent = createAsyncThunk('events/deleteEvent', async (id: EventId) => {
 //   await api.deleteEvent(id);
 //   return id;
@@ -33,10 +33,10 @@ const kidsSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(loadKids.fulfilled, (state, action) => {
       state.kidsArr = action.payload;
+    })
+    .addCase(addKid.fulfilled, (state, action) => {
+      state.kidsArr.push(action.payload);
     });
-    // .addCase(addEvent.fulfilled, (state, action) => {
-    //   state.eventsArr.push(action.payload);
-    // })
     // .addCase(deleteEvent.fulfilled, (state, action) => {
     //   state.eventsArr = state.eventsArr.filter((event) => event.id !== action.payload);
     // })
