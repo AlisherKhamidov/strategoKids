@@ -60,11 +60,6 @@ function Login(): JSX.Element {
     return (
       <div className={style.form__container}>
           <form className={style.forma} onSubmit={handleSubmit}>
-          {error && (
-            <div className="" style={{ display: 'block' }}>
-              {error}
-            </div>
-          )}
           <label className={style.label} htmlFor="phone">
           <span className={style.label__text}>Телефон</span>
           <input
@@ -80,8 +75,9 @@ function Login(): JSX.Element {
 
           <label className={style.label} htmlFor="pass">
           <span className={style.label__text}>Пароль</span>
-          <input className={style.input} id="pass" type={first ? 'text' : 'password'} value={password} onChange={handlePasswordChange} required placeholder="Введите пароль" />
+          <input className={error ? style.input__error : style.input} id="pass" type={first ? 'text' : 'password'} value={password} onChange={handlePasswordChange} required placeholder="Введите пароль" />
             <img onClick={() => toggleFirst()} className={style2.closed} src={first ? open : closed} alt="eye" />
+            {error && <p style={{ color: 'red' }}>{error}</p>}
           </label>
 
           <div className={style.btnPosition}>

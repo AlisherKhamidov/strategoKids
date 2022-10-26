@@ -6,21 +6,21 @@ module.exports = {
         {
 
           title: 'Уровень "Старт"',
-          img: 'https://bgtrk.ru/upload/resize_cache/iblock/da8/600_6000_1/niy9sycag9vxkmf29dw2pc6ne6zmoct2.jpg',
+          img: '/static/media/kid1.01295ece8628686bfb22.jpeg',
           info: 'Дети начинают с изучения правил',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
           title: 'Уровень "Конь"',
-          img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Chess_piece_-_White_knight.JPG/800px-Chess_piece_-_White_knight.JPG',
+          img: '/static/media/kid2.89dc97c46ae080578e3d.jpeg',
           info: 'Kon info',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
           title: 'Уровень "Ладья"',
-          img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Chess_piece_-_White_rook.JPG/800px-Chess_piece_-_White_rook.JPG',
+          img: '/static/media/kid3.d53b930003b75e655347.jpeg',
           info: 'Ladiya info',
           createdAt: new Date(),
           updatedAt: new Date(),

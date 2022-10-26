@@ -89,14 +89,15 @@ function Registration(): JSX.Element {
   return (
     <div className={style.form__container}>
       <form className={style.forma} onSubmit={handleSubmit}>
-      {error && (
+      {/* {error && (
         <div className="" style={{ display: 'block' }}>
           {error}
         </div>
-      )}
+      )} */}
         <label className={style.label} htmlFor="name">
           <span className={style.label__text}>Ваше имя</span>
-          <input className={style.input} id="name" value={name} onChange={handleNameChange} required placeholder="Введите ваше имя" />
+          <input className={error === 'Введите полное имя, пожалуйста' ? style.input__error : style.input} id="name" value={name} onChange={handleNameChange} required placeholder="Введите ваше имя" />
+          {error === 'Введите полное имя, пожалуйста' && <p style={{ color: 'red' }}>{error}</p>}
         </label>
         <label className={style.label} htmlFor="Email">
           <span className={style.label__text}>Email</span>
@@ -104,17 +105,19 @@ function Registration(): JSX.Element {
         </label>
         <label className={style.label} htmlFor="phone">
           <span className={style.label__text}>Телефон</span>
-          <input className={style.input} id="phone" value={phone} onChange={handlePhoneChange} required placeholder="+7-000-000-00-00" />
+          <input className={error === 'Введите корректный номер, пожалуйста' ? style.input__error : style.input} id="phone" value={phone} onChange={handlePhoneChange} required placeholder="+7-000-000-00-00" />
+          {error === 'Введите корректный номер, пожалуйста' && <p style={{ color: 'red' }}>{error}</p>}
         </label>
         <label className={style.label} htmlFor="pass">
           <span className={style.label__text}>Пароль</span>
-          <input className={style.input} id="pass" type={first ? 'text' : 'password'} value={password} onChange={handlePasswordChange} required placeholder="Придумайте пароль" />
+          <input className={error === 'Пароли не совпадают' ? style.input__error : style.input} id="pass" type={first ? 'text' : 'password'} value={password} onChange={handlePasswordChange} required placeholder="Придумайте пароль" />
           <img onClick={() => toggleFirst()} className={style2.closed} src={first ? open : closed} alt="eye" />
         </label>
         <label className={style.label} htmlFor="repPass">
           <span className={style.label__text}>Подтвердите пароль</span>
-          <input className={style.input} id="repPass" type={second ? 'text' : 'password'} value={passwordRepeat} onChange={handlePasswordRepeatChange} required placeholder="Пароль" />
+          <input className={error === 'Пароли не совпадают' ? style.input__error : style.input} id="repPass" type={second ? 'text' : 'password'} value={passwordRepeat} onChange={handlePasswordRepeatChange} required placeholder="Пароль" />
           <img onClick={() => toggleSecond()} className={style2.closed} src={second ? open : closed} alt="eye" />
+          {error === 'Пароли не совпадают' && <p style={{ color: 'red' }}>{error}</p>}
         </label>
         <div className={style.btnPosition}>
           <button className={style.button} type="submit">
