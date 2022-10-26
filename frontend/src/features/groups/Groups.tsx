@@ -9,7 +9,7 @@ import groupsStyle from './Groups.module.css'
 function Groups(): JSX.Element {
   const groupsList = useSelector((state: RootState) => state.groups.groupsArr);
   const isAdmin = useSelector((state: RootState)=> state.auth.user)
-  console.log(isAdmin);
+  // console.log(isAdmin);
   
   
   const [title, setTitle] = useState('');
