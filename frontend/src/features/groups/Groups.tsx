@@ -1,25 +1,25 @@
-import React, { FormEvent, useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { RootState, useAppDispatch } from "../../store";
+import React, { FormEvent, useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { RootState, useAppDispatch } from '../../store';
 import {
   loadGroups,
   createGroup,
   deleteGroup,
   updateGroup,
-} from "./groupsSlice";
-import GroupCard from "./GroupCard";
-import Group from "./types/Group";
-import groupsStyle from "./Groups.module.css";
-import Footer from "../footer/Footer";
+} from './groupsSlice';
+import GroupCard from './GroupCard';
+import Group from './types/Group';
+import groupsStyle from './Groups.module.css';
+import Footer from '../footer/Footer';
 
 function Groups(): JSX.Element {
   const groupsList = useSelector((state: RootState) => state.groups.groupsArr);
   const user = useSelector((state: RootState) => state.auth.user);
   console.log(user);
 
-  const [title, setTitle] = useState("");
-  const [img, setImg] = useState("");
-  const [info, setInfo] = useState("");
+  const [title, setTitle] = useState('');
+  const [img, setImg] = useState('');
+  const [info, setInfo] = useState('');
 
   const dispatch = useAppDispatch();
 
@@ -80,7 +80,7 @@ function Groups(): JSX.Element {
         ))}
       </div>
       <div>
-        <h4>И в зависимости от возраста: {''} школьники, {''} дошкольники</h4>
+        <h4>И в зависимости от возраста:  школьники,  дошкольники</h4>
       </div>
       <div>
         Занятия проводятся один/два/три раза в неделю согласно расписанию

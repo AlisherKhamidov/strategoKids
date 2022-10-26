@@ -1,12 +1,8 @@
-export default interface Kid {
+import KidData from './KidData';
+
+export default interface Kid extends KidData {
   id: number;
   user_id: number;
-  name: string;
-  secondName: string;
-  middleName: string;
-  birthDate: Date;
-  group_id: number;
-  photo : string;
 }
 
 export type KidId = Kid['id'];
