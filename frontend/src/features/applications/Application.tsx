@@ -10,13 +10,15 @@ export default function Application(): JSX.Element {
 
   const submit = handleSubmit(async (data: Data) => {
       createApplication(data).catch((error) => {
-        if (typeof error === 'string') {
+        if (error === 'Введите полное имя, пожалуйста') {
           setError('kidName', {
-            type: 'manual',
+            type: 'multiple',
             message: error,
           });
+        }
+         if (error === 'Введите корректный номер, пожалуйста') {
           setError('phone', {
-            type: 'manual',
+            type: 'multiple',
             message: error,
           });
         }
@@ -28,8 +30,9 @@ export default function Application(): JSX.Element {
       <form className={style.forma} onSubmit={submit}>
         <label className={style.label} htmlFor="input__kid">
           <span className={style.label__text}>Имя ребенка</span>
-          <input className={style.input} id="input__kid" {...register('kidName')} required placeholder="Введите имя ребёнка" />
-          <Error error={errors.kidName?.message} />
+          <input className={errors.kidName ? style.input__error : style.input} id="input__kid" {...register('kidName')} required placeholder="Введите имя ребёнка" />
+          {/* <Error error={errors.kidName?.message} /> */}
+          {errors.kidName && <p style={{ color: 'red' }}>{errors.kidName?.message}</p>}
         </label>
 
         <label className={style.label} htmlFor="input__data">
@@ -44,8 +47,9 @@ export default function Application(): JSX.Element {
 
         <label className={style.label} htmlFor="input__phone">
           <span className={style.label__text}>Телефон</span>
-          <input className={style.input} id="input__phone" {...register('phone')} required placeholder="+7-000-000-00-00" />
-          <Error error={errors.phone?.message} />
+          <input className={errors.phone ? style.input__error : style.input} id="input__phone" {...register('phone')} required placeholder="+7-000-000-00-00" />
+          {/* <Error error={errors.phone?.message} /> */}
+          {errors.phone && <p style={{ color: 'red' }}>{errors.phone?.message}</p>}
         </label>
 
         <label className={style.label} htmlFor="input__text">
@@ -62,12 +66,12 @@ export default function Application(): JSX.Element {
     </div>
   );
 }
-function Error({ error }: any): any {
-  if (!error) return null;
+// function Error({ error }: any): any {
+//   if (!error) return null;
 
-  return (
-    <div style={{ display: 'block' }}>
-      {error}
-    </div>
-  );
-}
+//   return (
+//     <div style={{ display: 'block' }}>
+//       {error}
+//     </div>
+//   );
+// }

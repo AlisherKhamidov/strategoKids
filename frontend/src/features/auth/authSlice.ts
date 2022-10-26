@@ -18,16 +18,18 @@ const initialState: AuthState = {
     async (data: RegisterData) => {
       // eslint-disable-next-line no-console
       console.log(data.phone.length);
-      if (data.password !== data.passwordRepeat) {
-        throw new Error('Пароли не совпадают');
+      if (data.name.length <= 2) {
+        throw new Error('Введите полное имя, пожалуйста');
+      }
+      if (data.phone.length < 11) {
+        throw new Error('Введите корректный номер, пожалуйста');
       }
       if (!data.name.trim() || !data.password.trim() || !data.email.trim() || !data.phone.trim()) {
         throw new Error('Не все поля заполнены');
       }
-      // if (data.phone.length !== 11) {
-      //   throw new Error('Некорректный номер телефона');
-      // }
-
+      if (data.password !== data.passwordRepeat) {
+        throw new Error('Пароли не совпадают');
+      }
       return api.register(data);
     }
   );
