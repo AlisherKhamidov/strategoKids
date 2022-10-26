@@ -4,12 +4,14 @@ import authSlice from './features/auth/authSlice';
 import groupsSlice from './features/groups/groupsSlice';
 // import authReducer from './features/auth/authSlice';
 import eventsSlice from './features/events/eventsSlice';
+import kidsSlice from './features/kids/kidsSlice';
 
 const store = configureStore({
   reducer: {
    auth: authSlice,
    groups: groupsSlice,
-   events: eventsSlice
+   events: eventsSlice,
+   kids: kidsSlice
   },
 });
 
