@@ -1,10 +1,9 @@
-import React, { ChangeEvent, FormEvent, useState } from "react";
-import User from "../auth/types/User";
-import Group from "./types/Group";
-import CardStyle from "./GroupCard.module.css";
-import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { RootState } from "../../store";
+import React, { ChangeEvent, FormEvent, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import Group from './types/Group';
+import CardStyle from './GroupCard.module.css';
+import { RootState } from '../../store';
 
 interface GroupPops {
   group: Group;
@@ -47,7 +46,7 @@ GroupPops): JSX.Element {
     setInfo(event.target.value);
   };
 
-  const handleSubmit = (event: any) => {
+  const handleSubmit = (event: any):void => {
     event.preventDefault();
     togleEdit();
   };
@@ -74,11 +73,11 @@ GroupPops): JSX.Element {
       )}
       <div className={CardStyle.title}>{group.title}</div>
       {edit && (
-        <>
-          <form className={CardStyle.form} onSubmit={handleSubmit}>
+        <form className={CardStyle.form} onSubmit={handleSubmit}>
             <label className={CardStyle.label}>
-              Название группы
+              <div>Название группы:</div>
               <input
+                className={CardStyle.input}
                 type="text"
                 value={title}
                 // defaultValue={group.title}
@@ -86,8 +85,9 @@ GroupPops): JSX.Element {
               />
             </label>
             <label className={CardStyle.label}>
-              Ссылка на изображение
+              <div>Ссылка на изображение:</div>
               <input
+                className={CardStyle.input}
                 type="text"
                 value={img}
                 // defaultValue={group.title}
@@ -95,26 +95,26 @@ GroupPops): JSX.Element {
               />
             </label>
             <label className={CardStyle.label}>
-              Описание группы
+              <div>Описание группы:</div>
               <input
+                className={CardStyle.input}
                 type="text"
                 value={info}
                 // defaultValue={group.title}
                 onChange={infoChange}
               />
             </label>
-            <button type="submit" style={{ display: "none" }}>
+            <button type="submit" style={{ display: 'none' }}>
               +
             </button>
-          </form>
-        </>
+        </form>
       )}
       <button
         className={CardStyle.whiteButton}
         type="button"
         onClick={toggleHandler(toggle)}
       >
-        {toggle ? "О группе" : "Назад"}
+        {toggle ? 'О группе' : 'Назад'}
       </button>
       {toggle ? (
         <img className={CardStyle.image} src={group.img} alt="" />

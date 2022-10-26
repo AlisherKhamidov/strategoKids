@@ -5,21 +5,17 @@ export async function loadKids(): Promise<Kid[]> {
     return response.json();
 }
 
-export async function addKids(event: { title: string;
-    photo: string;
-    description: string;
-    isTournament: boolean
-}): Promise<Event> {
-        const response = await fetch('/api/events', {
+export async function addKid(kid: Kid): Promise<Kid> {
+        const response = await fetch('/api/kids', {
             method: 'POST',
-            body: JSON.stringify(event),
+            body: JSON.stringify(kid),
             headers: {
                 'Content-type': 'application/json',
             },
         });
         // console.log(response);
         const result = await response.json();
-        return result.newEvent;
+        return result.newKid;
     }
 
 //     export async function deleteEvent(id: EventId): Promise<void> {
