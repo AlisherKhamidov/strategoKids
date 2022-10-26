@@ -1,5 +1,6 @@
 import React from 'react';
 import Event from './types/Event';
+import style from './EventCard.module.css';
 
 interface EventPops {
 event: Event;
@@ -14,19 +15,20 @@ function EventCard({ event, handleRemove,
   ): JSX.Element {
   // const [edit, setEdit] = useState(false);
   return (
-    <div className="card">
+    <div className={style.card}>
+      <div className={style.titleBox}>
+        <div className="content">{event.title}</div>
+      </div>
      <div
        className="btn"
-       style={{ display: 'flex', justifyContent: 'flex-end' }}
      >
-        <button type="button" className="ui icon button" onClick={() => handleRemove(event)}>
-          <i className="trash icon" />
+        <button type="button" className={style.buttonDelete} onClick={() => handleRemove(event)}>
+          <span className='deleteText'>Удалить мероприятие</span>
         </button>
-     </div>
-      <div className="content">{event.title}</div>
-      <img className="ui medium rounded image" src={event.photo} alt="some event" />
-      <div />
     <div>{event.description}</div>
+     </div>
+      <img className={style.image} src={event.photo} alt="some event" />
+      <div />
 
     </div>
   );
