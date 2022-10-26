@@ -14,6 +14,7 @@ import Login from '../features/auth/Login';
 import Registration from '../features/auth/Registration';
 import Schedule from '../features/schedule/Schedule';
 import Art from '../features/art/Art';
+import Admin from '../features/adminCab/Admin';
 // import { selectLogin } from '../features/auth/selectors';
 
 function App(): JSX.Element {
@@ -36,6 +37,7 @@ function App(): JSX.Element {
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<MainPage />} />
+          <Route path="/admin" element={<Admin />} />
           <Route path="/application" element={<Application />} />
           <Route path="/events" element={<Events />} />
           <Route path="/groups" element={<Groups />} />

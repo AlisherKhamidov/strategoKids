@@ -7,7 +7,7 @@ import headerStyle from './Header.module.css';
 
 export default function Header(): JSX.Element {
   const user = useSelector((globalState: RootState) => globalState.auth.user);
-  console.log(user)
+  // console.log(user)
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
@@ -38,7 +38,7 @@ export default function Header(): JSX.Element {
           <Link className={headerStyle.link} to="/login">Войти</Link>
           <Link className={headerStyle.link} to="/registration">Зарегистрироваться</Link>
         </div>
-      ) : (
+      ) : (user && !user.isAdmin) ? (
         <div>
         <Link className={headerStyle.link} to="/">Главная</Link>{' '}
         <Link className={headerStyle.link} to="/schedule">Расписание</Link>{' '}
@@ -47,7 +47,15 @@ export default function Header(): JSX.Element {
         <Link className={headerStyle.link} to="/groups">Группы</Link>
         <Link className={headerStyle.link} to="/" onClick={handleLogout}>Выйти</Link>
         </div>
-      )}
+        ) : (
+        <div>
+        <Link className={headerStyle.link} to="/">Главная</Link>{' '}
+        <Link className={headerStyle.link} to="/schedule">Расписание</Link>{' '}
+        <Link className={headerStyle.link} to="/events">События</Link>
+        <Link className={headerStyle.link} to="/groups">Группы</Link>
+        <Link className={headerStyle.link} to="/" onClick={handleLogout}>Выйти</Link>
+        </div>
+          )}
     </nav>
   );
 }
