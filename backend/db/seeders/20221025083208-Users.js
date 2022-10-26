@@ -24,6 +24,15 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date(),
         },
+        {
+          name: 'parent',
+          email: 'parent@user',
+          password: await bcrypt.hash('12345678', 10),
+          phone: '12341234567',
+          isAdmin: false,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
       ],
       {},
     );
