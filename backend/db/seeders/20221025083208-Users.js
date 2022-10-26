@@ -7,10 +7,19 @@ module.exports = {
       'Users',
       [
         {
-          name: 'Admin',
-          email: 'admin@admin.ru',
+          name: 'admin',
+          email: 'admin@admin',
           password: await bcrypt.hash('12345678', 10),
-          phone: '8800888',
+          phone: '123412345',
+          isAdmin: true,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          name: 'user',
+          email: 'user@user',
+          password: await bcrypt.hash('12345678', 10),
+          phone: '123412345',
           isAdmin: true,
           createdAt: new Date(),
           updatedAt: new Date(),
