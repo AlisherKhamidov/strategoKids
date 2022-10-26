@@ -30,6 +30,7 @@ export default function Header(): JSX.Element {
     <nav className={headerStyle.container}>
       {!user ? (
         <div>
+          <Link className={headerStyle.link} to="/about">О создателе</Link>{' '}
           <Link className={headerStyle.link} to="/">Главная</Link>{' '}
           <Link className={headerStyle.link} to="/schedule">Расписание</Link>{' '}
           <Link className={headerStyle.link} to="/application">Подача заявки</Link>{' '}
@@ -40,12 +41,13 @@ export default function Header(): JSX.Element {
         </div>
       ) : (
         <div>
+          <Link className={headerStyle.link} to="/about">О создателе</Link>{' '}
           <Link className={headerStyle.link} to="/">Главная</Link>{' '}
           <Link className={headerStyle.link} to="/schedule">Расписание</Link>{' '}
           <Link className={headerStyle.link} to="/application">Подача заявки</Link>{' '}
           <Link className={headerStyle.link} to="/events">События</Link>
           <Link className={headerStyle.link} to="/groups">Группы</Link>
-          {user?.isAdmin && <Link className={headerStyle.link} to="/parents">Кабинет родителя</Link>}
+          {!user?.isAdmin && <Link className={headerStyle.link} to="/parents">Кабинет родителя</Link>}
           <Link className={headerStyle.link} to="/" onClick={handleLogout}>Выйти</Link>
         </div>
       )}

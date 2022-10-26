@@ -1,17 +1,22 @@
 import React, { FormEvent, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState, useAppDispatch } from '../../store';
-import { loadGroups, createGroup, deleteGroup, updateGroup } from './groupsSlice';
+import {
+  loadGroups,
+  createGroup,
+  deleteGroup,
+  updateGroup,
+} from './groupsSlice';
 import GroupCard from './GroupCard';
 import Group from './types/Group';
-import groupsStyle from './Groups.module.css'
+import groupsStyle from './Groups.module.css';
+import Footer from '../footer/Footer';
 
 function Groups(): JSX.Element {
   const groupsList = useSelector((state: RootState) => state.groups.groupsArr);
-  const isAdmin = useSelector((state: RootState)=> state.auth.user)
-  // console.log(isAdmin);
-  
-  
+  const user = useSelector((state: RootState) => state.auth.user);
+  console.log(user);
+
   const [title, setTitle] = useState('');
   const [img, setImg] = useState('');
   const [info, setInfo] = useState('');
@@ -37,31 +42,31 @@ function Groups(): JSX.Element {
 
   return (
     <>
-      <h1>Groups</h1>
-    { isAdmin?.isAdmin && 
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Название группы"
-          value={title}
-          onChange={(event) => setTitle(event.target.value)}
-        />
+      <h1>Наши группы</h1>
+      {user?.isAdmin && (
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            placeholder="Название группы"
+            value={title}
+            onChange={(event) => setTitle(event.target.value)}
+          />
 
-        <input
-          type="text"
-          placeholder="Загрузить изображение"
-          value={img}
-          onChange={(event) => setImg(event.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Указать описание"
-          value={info}
-          onChange={(event) => setInfo(event.target.value)}
-        />
-        <button type="submit">OK</button>
-      </form>
-        }
+          <input
+            type="text"
+            placeholder="Загрузить изображение"
+            value={img}
+            onChange={(event) => setImg(event.target.value)}
+          />
+          <input
+            type="text"
+            placeholder="Указать описание"
+            value={info}
+            onChange={(event) => setInfo(event.target.value)}
+          />
+          <button type="submit">OK</button>
+        </form>
+      )}
       <h3>Группы формируются в зависимости от уже имеющегося опыта:</h3>
       <div className={groupsStyle.container}>
         {groupsList.map((group) => (
@@ -70,19 +75,17 @@ function Groups(): JSX.Element {
             group={group}
             handleRemove={handleRemove}
             handleUpdate={handleUpdate}
-            isAdmin={isAdmin!}
+            // isAdmin={isAdmin}
           />
         ))}
       </div>
       <div>
-        <ul>
-          И в зависимости от возраста:
-          <li>школьники</li>
-          <li>дошкольники</li>
-        </ul>
+        <h4>И в зависимости от возраста:  школьники,  дошкольники</h4>
       </div>
-      <div>Занятия проводятся один/два/три раза в неделю согласно расписанию</div>
-
+      <div>
+        Занятия проводятся один/два/три раза в неделю согласно расписанию
+      </div>
+      <Footer />
     </>
   );
 }

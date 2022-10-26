@@ -37,13 +37,13 @@
 
   .actionButton1 {
     color:white;
-    background-color: #2D53A1; 
+    background-color: #ED6A1D;
     border: none;
     padding: 15px;
     text-align: center;
     text-decoration: none;
     font-size: 16px;
-    margin: 4px 4px 20px 8px;
+    margin: 4px 4px 20px 4px;
     border-radius: 10px;
     position: absolute;
     justify-self: center;
@@ -56,7 +56,7 @@
 
   .whiteButton {
     color:rgb(255, 255, 255);
-    background-color: #010101; 
+    background-color: #9747FF; 
     border: none;
     padding: 15px;
     text-align: center;
@@ -67,7 +67,7 @@
     position: absolute;
     justify-self: center;
     top: 80%; 
-    left: 25%;
+    left: 33%;
     z-index: 3;
     
   }
@@ -87,27 +87,31 @@
     position: absolute;
     justify-self: center;
     top: 80%; 
-    left: 60%;
+    left: 65%;
     z-index: 3;
     
   }
 
   .form {
     position: absolute;
-    /* justify-self: center; */
-    top: 30%; 
-    left: 0%;
+    top: 15%; 
+    left: 6%;
     z-index: 3;
     background-color: white;
     display: flex;
     flex-direction: column;
-    justify-items: center;
-   
+    justify-content: center;
+    margin: 10px;
+    border-radius: 10px;
+    width: 80%;
+    height: 60%;
+
+
   }
 
 
   .cardBlue {
-    background-color: aqua;
+    background-color: #BDE3FF;
     position:absolute;
     border-radius: 10px;
     z-index: 0;
@@ -118,4 +122,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+
+  .label {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .input {
+    margin: 5px
   }

@@ -1,0 +1,16 @@
+.container2 {
+    background-color: #BDE3FF;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    align-content: center;
+    margin: 40px;
+}
+
+p {
+  text-align: left;
+}
