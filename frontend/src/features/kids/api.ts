@@ -1,11 +1,12 @@
 import Kid, { KidId } from './types/Kid';
+import KidData from './types/KidData';
 
 export async function loadKids(): Promise<Kid[]> {
     const response = await fetch('/api/kids');
     return response.json();
 }
 
-export async function addKid(kid: Kid): Promise<Kid> {
+export async function addKid(kid: KidData): Promise<Kid> {
         const response = await fetch('/api/kids', {
             method: 'POST',
             body: JSON.stringify(kid),
