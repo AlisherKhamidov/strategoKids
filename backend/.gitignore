@@ -3,6 +3,8 @@ node_modules
 DS_store
 # Logs
 
+.sessions
+
 logs
 *.log
 npm-debug.log*
