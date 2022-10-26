@@ -2,11 +2,19 @@
     width: 25px;
     height: 25px;
     position: absolute;
-    top: 40px;
-    left: 325px;
+    top: 50px;
+    left: 367px;
 }
 
 .closed:hover {
     cursor: pointer;
     transform: scale(1.2);
+}
+
+.closed__error {
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    top: 50px;
+    left: 367px;
 }
