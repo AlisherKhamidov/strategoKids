@@ -1,8 +1,11 @@
 import React from "react";
+import Footer from "../footer/Footer";
 import directorStyle from './Director.module.css';
 
 function Director() {
   return (
+    <>
+    <div className={directorStyle.container2}>
     <div className={directorStyle.container}>
       <p>
         ♨️ Здравствуйте! Меня зовут Мария Бутук. Я женский международный мастер
@@ -49,7 +52,11 @@ function Director() {
       <p>
         🙋‍♀️ Глядя на довольных детей на занятиях, надеюсь, что мне это удается 😊
       </p>
+      
     </div>
+    </div>
+    <Footer />
+    </>
   );
 }
 

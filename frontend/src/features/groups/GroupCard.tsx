@@ -46,7 +46,7 @@ GroupPops): JSX.Element {
     setInfo(event.target.value);
   };
 
-  const handleSubmit = (event: any):void => {
+  const handleSubmit = (event: FormEvent):void => {
     event.preventDefault();
     togleEdit();
   };
@@ -60,14 +60,14 @@ GroupPops): JSX.Element {
             type="button"
             onClick={togleEdit}
           >
-            изменить
+            Изменить
           </button>
           <button
             className={CardStyle.actionButton2}
             type="button"
             onClick={() => handleRemove(group)}
           >
-            удалить
+            Уалить
           </button>
         </div>
       )}
