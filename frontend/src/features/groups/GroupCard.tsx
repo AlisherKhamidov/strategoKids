@@ -1,29 +1,31 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import User from '../auth/types/User';
+import { useSelector } from 'react-redux';
 import Group from './types/Group';
 import CardStyle from './GroupCard.module.css';
+import { RootState } from '../../store';
 
 interface GroupPops {
   group: Group;
   handleRemove: (group: Group) => void;
   handleUpdate: (newGroup: Group) => void;
-  isAdmin: User;
+  // isAdmin: User;
 }
 
 function GroupCard({
   group,
   handleRemove,
   handleUpdate,
-  isAdmin,
-}: GroupPops): JSX.Element {
+}: // isAdmin,
+GroupPops): JSX.Element {
   const [edit, setEdit] = useState(false);
   const [title, setTitle] = useState(group.title);
   const [img, setImg] = useState(group.img);
   const [info, setInfo] = useState(group.info);
   const [toggle, setToggle] = useState(true);
   const navigate = useNavigate();
-  const toggleHandler = (prev:boolean) => () => setToggle(!prev);
+  const toggleHandler = (prev: boolean) => () => setToggle(!prev);
+  const user = useSelector((state: RootState) => state.auth.user);
 
   const togleEdit = (): void => {
     if (edit) {
@@ -44,31 +46,34 @@ function GroupCard({
     setInfo(event.target.value);
   };
 
-  const handleSubmit = (event: any):void => {
+  const handleSubmit = (event: FormEvent):void => {
     event.preventDefault();
     togleEdit();
   };
 
   return (
-      <div className={CardStyle.card}>
-        {isAdmin.isAdmin && (
-       <div>
-          <button className={CardStyle.actionButton1} type="button" onClick={togleEdit}>
-            Изменить
-            <i className="chess pawn icon" />
-          </button>
-          <button className={CardStyle.actionButton2} type="button" onClick={() => handleRemove(group)}>
-            Удалить
-            <i />
-          </button>
-       </div>
-     )}
-        <div className={CardStyle.title}>{group.title}</div>
-        {edit && (
-          <form
-            className={CardStyle.form}
-            onSubmit={handleSubmit}
+    <div className={CardStyle.card}>
+      {user?.isAdmin && (
+        <div>
+          <button
+            className={CardStyle.actionButton1}
+            type="button"
+            onClick={togleEdit}
           >
+            Изменить
+          </button>
+          <button
+            className={CardStyle.actionButton2}
+            type="button"
+            onClick={() => handleRemove(group)}
+          >
+            Уалить
+          </button>
+        </div>
+      )}
+      <div className={CardStyle.title}>{group.title}</div>
+      {edit && (
+        <form className={CardStyle.form} onSubmit={handleSubmit}>
             <label className={CardStyle.label}>
               <div>Название группы:</div>
               <input
@@ -102,17 +107,23 @@ function GroupCard({
             <button type="submit" style={{ display: 'none' }}>
               +
             </button>
-          </form>
-        )}
-          <button className={CardStyle.whiteButton} type="button" onClick={toggleHandler(toggle)}>
-           {toggle ? 'О группе' : 'Назад'}
-          </button>
-        {toggle ? <img className={CardStyle.image} src={group.img} alt="" /> : (
-          <div className={CardStyle.cardBlue}>
+        </form>
+      )}
+      <button
+        className={CardStyle.whiteButton}
+        type="button"
+        onClick={toggleHandler(toggle)}
+      >
+        {toggle ? 'О группе' : 'Назад'}
+      </button>
+      {toggle ? (
+        <img className={CardStyle.image} src={group.img} alt="" />
+      ) : (
+        <div className={CardStyle.cardBlue}>
           <p>{group.info}</p>
-          </div>
-        )}
-      </div>
+        </div>
+      )}
+    </div>
   );
 }
 
