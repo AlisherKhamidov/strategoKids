@@ -14,7 +14,7 @@ import Login from '../features/auth/Login';
 import Registration from '../features/auth/Registration';
 import Schedule from '../features/schedule/Schedule';
 import Art from '../features/art/Art';
-import Admin from '../features/adminCab/Admin';
+import Admin from '../features/adminCabinet/Admin';
 import ParentCabinet from '../features/parentCabinet/ParentCabinet';
 // import { selectLogin } from '../features/auth/selectors';
 

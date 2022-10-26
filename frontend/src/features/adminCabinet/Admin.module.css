@@ -5,7 +5,7 @@
 
 .admin__header {
     background-color: #BDE3FF;
-    color: white;
+    color: black;
     display: flex;
     flex-flow: row nowrap;
     height: 100%;

@@ -6,11 +6,6 @@ const { Application } = require('../db/models');
 // /api/Applications
 router
   .route('/')
-  // .get((req, res) => {
-  //   Application.findAll({ raw: true })
-  //     .then((allApplications) => res.json(allApplications))
-  //     .catch((error) => res.status(500).json({ message: error.message }));
-  // })
   .post((req, res) => {
     const {
       kidName, birthDate, parentName, phone, experience,
