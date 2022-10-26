@@ -8,6 +8,7 @@ const applicationApi = require('./routes/applicationsApi');
 const eventsApi = require('./routes/eventsApi');
 const groupsApi = require('./routes/groupsApi');
 const authApi = require('./routes/authApi');
+const kidsApi = require('./routes/kidsApi');
 
 // конфигурация сервера
 const serverConfig = require('./config/serverConfig');
@@ -24,6 +25,7 @@ app.use('/api/applications', applicationApi);
 app.use('/api/events', eventsApi);
 app.use('/api/groups', groupsApi);
 app.use('/api/auth', authApi);
+app.use('/api/kids', kidsApi);
 
 app.get('*', (req, res) => {
   res.sendFile(

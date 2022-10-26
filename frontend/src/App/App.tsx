@@ -15,6 +15,7 @@ import Registration from '../features/auth/Registration';
 import Schedule from '../features/schedule/Schedule';
 import Art from '../features/art/Art';
 import Admin from '../features/adminCab/Admin';
+import ParentCabinet from '../features/parentCabinet/ParentCabinet';
 // import { selectLogin } from '../features/auth/selectors';
 
 function App(): JSX.Element {
@@ -45,6 +46,7 @@ function App(): JSX.Element {
           <Route path="/art" element={<Art />} />
           <Route path="/login" element={<Login />} />
           <Route path="/registration" element={<Registration />} />
+          <Route path="/parents" element={<ParentCabinet />} />
         </Route>
       </Routes>
     </div>
