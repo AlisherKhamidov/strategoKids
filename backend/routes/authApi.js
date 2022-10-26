@@ -12,7 +12,7 @@ authRouter.get('/user', async (req, res) => {
         name: user.name,
         email: user.email,
         phone: user.phone,
-        password: user.password,
+        // password: user.password,
         isAdmin: user.isAdmin,
       },
     });
@@ -42,8 +42,10 @@ authRouter.post('/register', async (req, res) => {
   });
 
   // кладём id нового пользователя в хранилище сессии (сразу логиним пользователя)
-  req.session.user = { id: existingUser?.id, isAdmin: existingUser?.isAdmin };
-  res.json({ id: user?.id, phone: user.phone });
+  req.session.user = {
+    id: user.id, name: user.name, email: user.email, isAdmin: user.isAdmin,
+  };
+  res.json({ id: user.id, phone: user.phone, isAdmin: user.isAdmin });
 });
 
 authRouter.post('/login', async (req, res) => {
@@ -53,7 +55,7 @@ authRouter.post('/login', async (req, res) => {
   // проверяем, что такой пользователь есть в БД и пароли совпадают
   if (existingUser && (await bcrypt.compare(password, existingUser.password))) {
     // кладём id нового пользователя в хранилище сессии (логиним пользователя)
-    req.session.user = { id: existingUser.id, isAdmin: existingUser.isAdmin };
+    // req.session.user = { id: existingUser.id, isAdmin: existingUser.isAdmin };
     req.session.user = existingUser;
     res.json({ id: existingUser.id, phone: existingUser.phone, isAdmin: req.session.user.isAdmin });
   } else {
