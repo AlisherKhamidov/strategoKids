@@ -57,7 +57,7 @@ authRouter.post('/login', async (req, res) => {
     req.session.user = existingUser;
     res.json({ id: existingUser.id, phone: existingUser.phone, isAdmin: req.session.user.isAdmin });
   } else {
-    res.status(401).json({ error: 'Такого пользователя не существует либо пароли не совпадают' });
+    res.status(401).json({ error: 'Такого пользователя не существует либо неверный пароль' });
   }
 });
 

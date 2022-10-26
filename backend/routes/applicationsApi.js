@@ -19,9 +19,9 @@ router
     console.log('🦄 🦄 🦄 🦄 🦄 🦄 🦄 🦄 🦄 🦄 🦄 🦄 🦄 🦄 🦄 ')
     console.log(kidName, birthDate, parentName, phone, experience);
     if (kidName.length <= 2) {
-      return res.status(404).json({ error: 'Введите полное имя, пожалуйста' });
+      res.status(404).json({ error: 'Введите полное имя, пожалуйста' });
     }
-    if (phone.length < 10) {
+    if (phone.length < 11) {
       return res.status(404).json({ error: 'Введите корректный номер, пожалуйста' });
     }
     if (kidName && birthDate) {

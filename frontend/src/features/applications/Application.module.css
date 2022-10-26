@@ -49,6 +49,13 @@
     background-color: #ffcd29;
     cursor: pointer;
 }
+.input__error {
+    height: 35px;
+    text-align: center;
+    border: 1px solid red;
+    border-radius: 7px;
+    font-family: sans-serif;
+}
 
 .button{
     background-color: #FCBF0B ;
