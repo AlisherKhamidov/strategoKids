@@ -5,10 +5,12 @@ import { RootState, useAppDispatch } from '../../store';
 // import { deleteEvent } from './api';
 import Event from './types/Event';
 import EventCard from './EventCard';
-import { addEvent, loadEvents, deleteEvent,
-  updateEvent
+import { loadEvents, deleteEvent,
+  updateEvent,
+  addEvent
 } from './eventsSlice';
 import style from './Events.module.css';
+import * as api from './api';
 
 export default function Events(): JSX.Element {
   const [title, setTitle] = useState('');
@@ -25,7 +27,10 @@ export default function Events(): JSX.Element {
 
   const handleSubmit = (event: FormEvent): void => {
     event.preventDefault();
-    dispatch(addEvent({ title, description, photo, isTournament: true }));
+    const data = new FormData(event.target as HTMLFormElement);
+    // api.addEvent(data);
+    dispatch(addEvent(data));
+
   };
   const handleRemove = (eventToDelete: Event): void => {
     dispatch(deleteEvent(eventToDelete.id));
@@ -38,13 +43,14 @@ export default function Events(): JSX.Element {
     <div className={style.container}>
       {user?.isAdmin && (
       <div className={style.containerForm}>
-        <form onSubmit={handleSubmit} className={style.inputForm}>
+        <form onSubmit={handleSubmit} className={style.inputForm} encType="multipart/form-data">
           <input
             className={style.input}
             type="text"
             placeholder="Название события"
             value={title}
             onChange={(event) => setTitle(event.target.value)}
+            name="title"
           />
           <input
             className={style.input}
@@ -52,13 +58,15 @@ export default function Events(): JSX.Element {
             placeholder="Введите описание"
             value={description}
             onChange={(event) => setDescription(event.target.value)}
+            name="description"
           />
           <input
             className={style.input}
-            type="text"
+            type="file"
+            name="image"
             placeholder="Ссылка на фото"
-            value={photo}
-            onChange={(event) => setPhoto(event.target.value)}
+            // value={photo}
+            // onChange={(event) => setPhoto(event.target.value)}
           />
           <button className={style.inputButton} type="submit"> Создать мероприятие</button>
         </form>

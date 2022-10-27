@@ -10,8 +10,9 @@ const initialState: EventsListState = {
 export const loadEvents = createAsyncThunk('events/loadEvents', () =>
   api.loadEvents()
 );
-export const addEvent = createAsyncThunk('events/addEvent', async (event: { title: string, description: string, photo: string, isTournament: boolean }) => {
+export const addEvent = createAsyncThunk('events/addEvent', async (event: any) => {
  const newEvent = await api.addEvent(event);
+ console.log(newEvent);
  return newEvent;
 }
 );
