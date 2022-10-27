@@ -54,6 +54,7 @@ export default function Header(): JSX.Element {
         <Link className={headerStyle.link} to="/schedule">Расписание</Link>{' '}
         <Link className={headerStyle.link} to="/events">События</Link>
         <Link className={headerStyle.link} to="/groups">Группы</Link>
+        <Link className={headerStyle.link} to="/admin">Кабинет админа</Link>
         <Link className={headerStyle.link} to="/" onClick={handleLogout}>Выйти</Link>
         </div>
           )}

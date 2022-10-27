@@ -5,40 +5,44 @@ adminRouter.get('/adminApplications', async (req, res) => {
   try {
     const applications = await Application.findAll({
       raw: true,
-      //  where: isChecked = false
+      // where: { isChecked: false },
     });
-    res.json(applications);
+    console.log(applications);
+    return res.json(applications);
   } catch (error) {
     res.json({ success: false });
   }
 });
 
-adminRouter.get('/adminApplicationsAccepted', async (req, res) => {
+// adminRouter.put('/change', async (req, res) => {
+//   try {
+//     // console.log('yyyyy')
+//     const { appId, status } = req.body;
+//     // console.log(req.body);
+//     const currentApplication = await Application.findOne({ where: { id: appId } });
+//     if (currentApplication) {
+//       currentApplication.isChecked = status;
+//       await currentApplication.save();
+//       return res.json({ status: currentApplication.isChecked, appId });
+//     }
+//   } catch (error) {
+//     res.json({ success: false });
+//   }
+// });
+adminRouter.put('/change', (req, res) => {
   try {
-    const applications = await Application.findAll({
-      raw: true,
-      //  where: isChecked = true
-    });
-    res.json(applications);
+    const { appId, status } = req.body;
+
+    // if (status) {
+    Application.update({ isChecked: status }, { where: { id: appId }, raw: true, returning: true })
+      .then((updatedData) => {
+        const [, [updatedApplication]] = updatedData;
+        res.json(updatedApplication);
+      });
+    // }
   } catch (error) {
-    res.json({ success: false });
+    res.status(500).json({ error });
   }
 });
 
-adminRouter.put('/:id', async (req, res) => {
-  try {
-    const { id } = req.params;
-
-    const { isAdmin } = req.body;
-
-    if (isAdmin) {
-      Application.update({ isAdmin }, { where: { id }, raw: true, returning: true })
-        .then((updatedData) => {
-          const [, [updatedGroup]] = updatedData;
-          return res.json(updatedGroup);
-        });
-    }
-  } catch (error) {
-    res.json({ success: false });
-  }
-});
+module.exports = adminRouter;

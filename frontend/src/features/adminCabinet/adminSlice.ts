@@ -7,36 +7,34 @@ const initialState: DataState = {
     applicationsArr: [],
 };
 
-export const notAccepted = createAsyncThunk('adminApplications', () =>
+export const loadedApplications = createAsyncThunk('adminApplications', () =>
   api.loadApplications()
 );
 
-export const Accepted = createAsyncThunk('adminApplicationsAccepted', () =>
-  api.loadApplicationsAccepted()
-);
-
-export const changeStatus = createAsyncThunk('adminApplications/updateApp', async (newApplication: Data) => {
-  await api.updateApplicationsLoading(newApplication);
-  return newApplication;
+export const changeStatus = createAsyncThunk('adminApplications/updateApp', async (updatedApplication: { status: boolean, appId: number }) => {
+  const data = await api.updateApplicationsLoading(updatedApplication);
+  return updatedApplication;
 });
 
 const adminSlice = createSlice({
-   name: 'application',
+   name: 'applications',
    initialState,
    reducers: {},
    extraReducers: (builder) => {
     builder
-      .addCase(notAccepted.fulfilled, (state, action) => {
-        state.applicationsArr = action.payload;
-      })
-      .addCase(Accepted.fulfilled, (state, action) => {
+      .addCase(loadedApplications.fulfilled, (state, action) => {
         state.applicationsArr = action.payload;
       })
       .addCase(changeStatus.fulfilled, (state, action) => {
+        // console.log(action.payload);
+        // state.applicationsArr = state.applicationsArr
+        // .map((el) => (el.id === action.payload.id)
+        //   ? { ...el, status: action.payload.isChecked } : el);
+          // console.log(state.applicationsArr);
+        // Object.assign(oldApplication, action.payload);
         const oldApplication = state.applicationsArr.find(
-          (x) => x.id === action.payload.id
+          (x) => x.id === action.payload.appId
         );
-
         Object.assign(oldApplication!, action.payload);
       });
     }

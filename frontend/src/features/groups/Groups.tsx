@@ -4,14 +4,13 @@ import { RootState, useAppDispatch } from '../../store';
 import { loadGroups, createGroup, deleteGroup, updateGroup } from './groupsSlice';
 import GroupCard from './GroupCard';
 import Group from './types/Group';
-import groupsStyle from './Groups.module.css'
+import groupsStyle from './Groups.module.css';
 
 function Groups(): JSX.Element {
   const groupsList = useSelector((state: RootState) => state.groups.groupsArr);
-  const isAdmin = useSelector((state: RootState)=> state.auth.user)
+  const isAdmin = useSelector((state: RootState) => state.auth.user);
   // console.log(isAdmin);
-  
-  
+
   const [title, setTitle] = useState('');
   const [img, setImg] = useState('');
   const [info, setInfo] = useState('');
@@ -38,7 +37,7 @@ function Groups(): JSX.Element {
   return (
     <>
       <h1>Groups</h1>
-    { isAdmin?.isAdmin && 
+    { isAdmin?.isAdmin && (
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -61,7 +60,7 @@ function Groups(): JSX.Element {
         />
         <button type="submit">OK</button>
       </form>
-        }
+    )}
       <h3>Группы формируются в зависимости от уже имеющегося опыта:</h3>
       <div className={groupsStyle.container}>
         {groupsList.map((group) => (
