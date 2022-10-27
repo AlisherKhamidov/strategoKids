@@ -10,7 +10,6 @@ import {
 import GroupCard from './GroupCard';
 import Group from './types/Group';
 import groupsStyle from './Groups.module.css';
-import Footer from '../footer/Footer';
 
 function Groups(): JSX.Element {
   const groupsList = useSelector((state: RootState) => state.groups.groupsArr);
@@ -29,6 +28,9 @@ function Groups(): JSX.Element {
   const handleSubmit = (event: FormEvent): void => {
     event.preventDefault();
     dispatch(createGroup({ title, img, info }));
+    setTitle('');
+    setImg('');
+    setInfo('');
   };
 
   const handleRemove = (groupToDelete: Group): void => {
@@ -76,9 +78,8 @@ function Groups(): JSX.Element {
             group={group}
             handleRemove={handleRemove}
             handleUpdate={handleUpdate}
-            // isAdmin={isAdmin}
           />
-        ))}
+        )).reverse()}
       </div>
     </>
   );
