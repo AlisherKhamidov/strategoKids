@@ -15,7 +15,6 @@ kidsApi.get('/', async (req, res) => {
 kidsApi.post('/', (req, res) => {
   try {
     const {
-      user_id,
       name,
       secondName,
       middleName,
@@ -23,8 +22,9 @@ kidsApi.post('/', (req, res) => {
       group_id,
       photo,
     } = req.body;
+    const { user } = res.locals;
     Kid.create({
-      user_id,
+      user_id: user.id,
       name,
       secondName,
       middleName,

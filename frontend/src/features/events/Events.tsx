@@ -6,8 +6,9 @@ import { RootState, useAppDispatch } from '../../store';
 import Event from './types/Event';
 import EventCard from './EventCard';
 import { addEvent, loadEvents, deleteEvent,
-  // updateEvent
+  updateEvent
 } from './eventsSlice';
+import style from './EventCard.module.css';
 
 export default function Events(): JSX.Element {
   const [title, setTitle] = useState('');
@@ -28,9 +29,9 @@ export default function Events(): JSX.Element {
   const handleRemove = (eventToDelete: Event): void => {
     dispatch(deleteEvent(eventToDelete.id));
   };
-  // const handleUpdate = (newEvent: Event): void => {
-  //     dispatch(updateEvent(newEvent));
-  //   };
+  const handleUpdate = (newEvent: Event): void => {
+      dispatch(updateEvent(newEvent));
+    };
 
   return (
     <>
@@ -57,13 +58,13 @@ export default function Events(): JSX.Element {
         <button type="submit"> Создать мероприятие</button>
       </form>
       <h1>Events</h1>
-      <div className="ui cards">
+      <div className={style.container}>
       { eventsList.map((event) => (
       <EventCard
         key={event.id}
         event={event}
         handleRemove={handleRemove}
-        // handleUpdate={handleUpdate}
+        handleUpdate={handleUpdate}
       />
     )) }
       </div>
