@@ -50,45 +50,37 @@ function EventCard({ event, handleRemove,
   return (
     <div className={style.card}>
       {user?.isAdmin && (
-     <div>
-        <button className={style.actionButton1} type="button" onClick={togleEdit}>edit
-          <i className="chess pawn icon" />
-        </button>
-        <button className={style.actionButton2} type="button" onClick={() => handleRemove(event)}>delete
-          <i />
-        </button>
-     </div>
-   )}
-      <div className={style.title}>{event.title}</div>
-      {edit && (
+      <>
+        <div className={style.title}>{event.title}</div>
+        {edit && (
         <form
           className={style.form}
           onSubmit={handleSubmit}
         >
           <label className={style.label}>
-            Название группы
+            <div className={style.form}>Название мероприятия</div>
             <input
+              className={style.input}
               type="text"
               value={title}
-              // defaultValue={group.title}
               onChange={titleChange}
             />
           </label>
           <label className={style.label}>
-            Ссылка на изображение
+            <div>Ссылка на изображение</div>
             <input
+              className={style.input}
               type="text"
               value={photo}
-              // defaultValue={group.title}
               onChange={photoChange}
             />
           </label>
           <label className={style.label}>
-            Описание группы
+            <div>Описание мероприятие</div>
             <input
+              className={style.input}
               type="text"
               value={description}
-              // defaultValue={group.title}
               onChange={descriptionChange}
             />
           </label>
@@ -97,9 +89,37 @@ function EventCard({ event, handleRemove,
           </button>
         </form>
       )}
-        <button className={style.whiteButton} type="button" onClick={toggleHandler(toggle)}>
-         {toggle ? 'О группе' : 'Назад'}
-        </button>
+        <div className={style.buttonsContainer}>
+          <button className={style.actionButton1} type="button" onClick={togleEdit}>
+            Изменить
+          </button>
+          <button
+            className={style.actionButton2}
+            type="button"
+            onClick={toggleHandler(toggle)}
+          >
+            {toggle ? 'О группе' : 'Назад'}
+          </button>
+          <button className={style.actionButton3} type="button" onClick={() => handleRemove(event)}>
+            Удалить
+          </button>
+        </div>
+      </>
+   )}
+      {!user?.isAdmin && (
+      <>
+        <div className={style.title}>{event.title}</div>
+        <div className={style.buttonsContainer}>
+          <button
+            className={style.actionButton4}
+            type="button"
+            onClick={toggleHandler(toggle)}
+          >
+            {toggle ? 'О группе' : 'Назад'}
+          </button>
+        </div>
+      </>
+   )}
       {toggle ? <img className={style.image} src={event.photo} alt="" /> : (
         <div className={style.cardBlue}>
         <p>{event.description}</p>

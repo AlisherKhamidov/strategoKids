@@ -38,7 +38,11 @@
     text-align: center;
     border: 1px solid rgb(207, 201, 201);
     border-radius: 7px;
-    font-family: sans-serif;
+    font-family: "Inter";
+    font-size: 20px;
+    padding: 5px;
+    margin-right: 20px;
+    margin-left: 20px;
 }
 
 .input:focus {
@@ -58,14 +62,18 @@
 }
 
 .button{
+    color: white;
     background-color: #FCBF0B ;
     border: none;
-    height: 50px;
-    width: 150px;
+    padding: 10px;
+    padding-left: 25px;
+    padding-right: 25px;
+    border: 20px;
     text-align:center;
     border: 1px solid rgb(207, 201, 201);
-    border-radius: 7px;
-    font-family: sans-serif;
+    border-radius: 10px;
+    font-family: "Inter";
+    font-size: 25px;
 }
 .button:hover {
     cursor: pointer;
@@ -73,3 +81,10 @@
     background-color: white;
 }
 
+@font-face {
+    font-family: "Inter"; 
+    src: url("../../../public/Inter/Inter-V.ttf") format("truetype"); 
+    font-style: medium; 
+    font-weight: normal; 
+    } 
+  

@@ -53,24 +53,6 @@ GroupPops): JSX.Element {
 
   return (
     <div className={CardStyle.card}>
-      {user?.isAdmin && (
-        <div>
-          <button
-            className={CardStyle.actionButton1}
-            type="button"
-            onClick={togleEdit}
-          >
-            Изменить
-          </button>
-          <button
-            className={CardStyle.actionButton2}
-            type="button"
-            onClick={() => handleRemove(group)}
-          >
-            Уалить
-          </button>
-        </div>
-      )}
       <div className={CardStyle.title}>{group.title}</div>
       {edit && (
         <form className={CardStyle.form} onSubmit={handleSubmit}>
@@ -109,13 +91,46 @@ GroupPops): JSX.Element {
             </button>
         </form>
       )}
-      <button
-        className={CardStyle.whiteButton}
-        type="button"
-        onClick={toggleHandler(toggle)}
-      >
+
+      {user?.isAdmin && (
+        <div>
+          <button
+            className={CardStyle.actionButton1}
+            type="button"
+            onClick={togleEdit}
+          >
+            Изменить
+          </button>
+          <button
+            className={CardStyle.actionButton2}
+            type="button"
+            onClick={toggleHandler(toggle)}
+          >
         {toggle ? 'О группе' : 'Назад'}
-      </button>
+          </button>
+          <button
+            className={CardStyle.actionButton3}
+            type="button"
+            onClick={() => handleRemove(group)}
+          >
+            Удалить
+          </button>
+        </div>
+      )}
+      {!user?.isAdmin && (
+      <>
+        {/* <div className={CardStyle.title}>{CardStyle.title}</div> */}
+        <div className={CardStyle.buttonsContainer}>
+          <button
+            className={CardStyle.actionButton4}
+            type="button"
+            onClick={toggleHandler(toggle)}
+          >
+            {toggle ? 'О группе' : 'Назад'}
+          </button>
+        </div>
+      </>
+      )}
       {toggle ? (
         <img className={CardStyle.image} src={group.img} alt="" />
       ) : (

@@ -10,7 +10,6 @@ export default function MainPage(): JSX.Element {
 
       <Stories />
       <Tournaments />
-      <Footer />
     </>
   );
 }

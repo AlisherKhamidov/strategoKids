@@ -1,0 +1,16 @@
+.admin__container {
+    display: flex;
+    flex-direction: column;
+}
+
+.admin__header {
+    background-color: #BDE3FF;
+    color: black;
+    display: flex;
+    flex-flow: row nowrap;
+    height: 150px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+}
