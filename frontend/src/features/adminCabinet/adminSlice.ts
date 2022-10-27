@@ -1,5 +1,4 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import Data from '../applications/types/Data';
 import DataState from '../applications/types/DataState';
 import * as api from './api';
 

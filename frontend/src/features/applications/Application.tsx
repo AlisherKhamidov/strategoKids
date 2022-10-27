@@ -1,5 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 import style from './Application.module.css';
 import sendApplication from './telegramApi';
 import createApplication from './api';
@@ -7,7 +8,7 @@ import Data from './types/Data';
 
 export default function Application(): JSX.Element {
   const { register, handleSubmit, formState: { errors }, setError, } = useForm<Data>();
-
+  const navigate = useNavigate();
   const submit = handleSubmit(async (data: Data) => {
       createApplication(data).catch((error) => {
         if (error === 'Введите полное имя, пожалуйста') {
@@ -24,6 +25,7 @@ export default function Application(): JSX.Element {
         }
       });
       sendApplication(data);
+      navigate('/');
   });
   return (
     <div className={style.form__container}>

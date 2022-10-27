@@ -9,17 +9,17 @@ export default function Footer(): JSX.Element {
     <div className={footerStyle.footer}>
     <div className={footerStyle.container}>
       <div className={footerStyle.raw1}>
-        <h3>Контакты</h3>
-        <h4>Номер телефона<br/><br/> +7 (921) 944-11-92</h4>
-        <h3>Социальные сети</h3>
+        <h2>Контакты</h2>
+        <h3>Номер телефона<br/><br/> +7 (921) 944-11-92</h3>
+        <h2>Социальные сети</h2>
         <div className={footerStyle.logo}>
           <a href={'https://vk.com/stratego_kids'}><img src={vkLogo} alt="" /></a>
           <a href={'#'}><img src={instaLogo} alt="" /></a>
         </div>
       </div>
       <div className={footerStyle.raw2}>
-        <h3>Адрес</h3>
-        <h4>Аптекарская набережная, 12, Санкт-Петербург</h4>
+        <h2>Адрес</h2>
+        <h3>Аптекарская набережная, 12, Санкт-Петербург</h3>
       </div>
     </div>
     </div>

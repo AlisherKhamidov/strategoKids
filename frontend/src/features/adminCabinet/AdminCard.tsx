@@ -27,7 +27,8 @@ function AdminCard({ application, handleStatusChange }: AdminProp): JSX.Element 
               onClick={() => handleStatusChange(
                 { status: !application.isChecked, appId: application.id }
               )}
-            >Обработано
+            >
+              {application.isChecked ? 'Вернуть из архива' : 'Обработать'}
             </button>
         </div>
     );
