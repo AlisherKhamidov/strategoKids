@@ -40,47 +40,47 @@ function Groups(): JSX.Element {
   };
 
   return (
-    <>
-      <h1>Наши группы</h1>
+    <div className={groupsStyle.container}>
       {user?.isAdmin && (
-        <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            placeholder="Название группы"
-            value={title}
-            onChange={(event) => setTitle(event.target.value)}
-          />
+        <div className={groupsStyle.containerForm}>
+          <form onSubmit={handleSubmit} className={groupsStyle.inputForm}>
+            <input
+              className={groupsStyle.input}
+              type="text"
+              placeholder="Введите название группы"
+              value={title}
+              onChange={(event) => setTitle(event.target.value)}
+            />
 
-          <input
-            type="text"
-            placeholder="Загрузить изображение"
-            value={img}
-            onChange={(event) => setImg(event.target.value)}
-          />
-          <input
-            type="text"
-            placeholder="Указать описание"
-            value={info}
-            onChange={(event) => setInfo(event.target.value)}
-          />
-          <button type="submit">OK</button>
-        </form>
+            <input
+              className={groupsStyle.input}
+              type="text"
+              placeholder="Добавьте ссылку не изображение"
+              value={img}
+              onChange={(event) => setImg(event.target.value)}
+            />
+            <input
+              className={groupsStyle.input}
+              type="text"
+              placeholder="Добавьте описание"
+              value={info}
+              onChange={(event) => setInfo(event.target.value)}
+            />
+            <button type="submit" className={groupsStyle.inputButton}>
+              Создать новую группу
+            </button>
+          </form>
+        </div>
       )}
-      <div>
-        Группы формируются в зависимости от уже имеющегося опыта
-      </div>
-      <div className={groupsStyle.container}>
         {groupsList.map((group) => (
           <GroupCard
             key={group.id}
             group={group}
             handleRemove={handleRemove}
             handleUpdate={handleUpdate}
-            // isAdmin={isAdmin}
           />
         ))}
-      </div>
-    </>
+    </div>
   );
 }
 

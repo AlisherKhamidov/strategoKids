@@ -62,7 +62,7 @@ export default function ParentCabinet(): JSX.Element {
 
         <div className={style.btnPosition}>
           <button className={style.button} type="submit">
-            Отправить заявку
+            Добавить ребенка
           </button>
         </div>
       </form>
