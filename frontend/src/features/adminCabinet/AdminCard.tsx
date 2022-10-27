@@ -1,7 +1,5 @@
-import { useAppDispatch } from '../../store';
 import Data from '../applications/types/Data';
 import adminStyle from './AdminCard.module.css';
-import { changeStatus } from './adminSlice';
 
 interface AdminProp {
   handleStatusChange: (adminData: { status: boolean, appId: number }) => void;

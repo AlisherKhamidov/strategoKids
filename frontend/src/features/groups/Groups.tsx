@@ -29,6 +29,9 @@ function Groups(): JSX.Element {
   const handleSubmit = (event: FormEvent): void => {
     event.preventDefault();
     dispatch(createGroup({ title, img, info }));
+    setTitle('');
+    setImg('');
+    setInfo('');
   };
 
   const handleRemove = (groupToDelete: Group): void => {
@@ -80,7 +83,7 @@ function Groups(): JSX.Element {
             handleRemove={handleRemove}
             handleUpdate={handleUpdate}
           />
-        ))}
+        )).reverse()}
     </div>
   );
 }

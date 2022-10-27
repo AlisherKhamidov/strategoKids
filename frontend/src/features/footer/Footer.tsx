@@ -1,20 +1,19 @@
-import footerStyle from "./Footer.module.css";
-import vkLogo from "./images/vk.png";
-import instaLogo from "./images/instagram.png";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
+import footerStyle from './Footer.module.css';
+import vkLogo from './images/vk.png';
+import instaLogo from './images/instagram.png';
 
 export default function Footer(): JSX.Element {
-  const navigate = useNavigate()
   return (
     <div className={footerStyle.footer}>
     <div className={footerStyle.container}>
       <div className={footerStyle.raw1}>
         <h2>Контакты</h2>
-        <h3>Номер телефона<br/><br/> +7 (921) 944-11-92</h3>
+        <h3>Номер телефона<br /><br /> +7 (921) 944-11-92</h3>
         <h2>Социальные сети</h2>
         <div className={footerStyle.logo}>
-          <a href={'https://vk.com/stratego_kids'}><img src={vkLogo} alt="" /></a>
-          <a href={'#'}><img src={instaLogo} alt="" /></a>
+          <a href="https://vk.com/stratego_kids"><img src={vkLogo} alt="" /></a>
+          <a href="#"><img src={instaLogo} alt="" /></a>
         </div>
       </div>
       <div className={footerStyle.raw2}>
