@@ -32,13 +32,10 @@ router
     const {
       title, description, isTournament,
     } = req.body;
-    console.log('================================================');
-    console.log({
-      title, description, photo: imgStr,
-    });
-    console.log('================================================');
+    let switcher = false;
+    if (isTournament === 'on') { switcher = true; }
     Event.create({
-      title, description, photo: imgStr, isTournament,
+      title, description, photo: imgStr, isTournament: switcher,
 
     })
       .then((newEvent) => res

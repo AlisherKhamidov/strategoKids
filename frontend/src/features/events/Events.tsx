@@ -70,13 +70,13 @@ export default function Events(): JSX.Element {
             className={style.input}
             type="file"
             name="image"
-            placeholder="Ссылка на фото"
+            placeholder=""
             // value={photo}
             // onChange={(event) => setPhoto(event.target.value)}
           />
           <div className={style.inputSpecial}>
           <label htmlFor="isTournament"> Турнир</label>
-           <input onClick={handleClick} className={style.input} type="checkbox" id="isTournament" name="isTournament" value="true" />
+           <input onClick={handleClick} className={style.input} type="checkbox" id="isTournament" name="isTournament" />
           </div>
           <button className={style.inputButton} type="submit"> Создать мероприятие</button>
         </form>
