@@ -40,9 +40,7 @@ function Groups(): JSX.Element {
   };
 
   return (
-    <>
-
-      <div className={groupsStyle.container}>
+    <div className={groupsStyle.container}>
       {user?.isAdmin && (
         <div className={groupsStyle.containerForm}>
           <form onSubmit={handleSubmit} className={groupsStyle.inputForm}>
@@ -82,9 +80,7 @@ function Groups(): JSX.Element {
             handleUpdate={handleUpdate}
           />
         ))}
-      </div>
-      <Footer />
-    </>
+    </div>
   );
 }
 
