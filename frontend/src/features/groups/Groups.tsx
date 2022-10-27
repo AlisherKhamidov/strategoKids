@@ -83,7 +83,7 @@ function Groups(): JSX.Element {
             handleRemove={handleRemove}
             handleUpdate={handleUpdate}
           />
-        ))}
+        )).reverse()}
     </div>
   );
 }
