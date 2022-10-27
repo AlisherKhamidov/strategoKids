@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { RootState, useAppDispatch } from '../../store';
 import { logout } from '../auth/authSlice';
 import headerStyle from './Header.module.css';
@@ -26,30 +26,35 @@ export default function Header(): JSX.Element {
         }
     },
     [dispatch, navigate]);
+
+    const activeHandler = ({ isActive }:{ isActive:boolean }):string => isActive
+    ? headerStyle.linkActive : headerStyle.link;
+
   return (
     <nav className={headerStyle.container}>
       {!user ? (
-        <div>
-          <Link className={headerStyle.link} to="/about">О создателе</Link>{' '}
-          <Link className={headerStyle.link} to="/">Главная</Link>{' '}
-          <Link className={headerStyle.link} to="/schedule">Расписание</Link>{' '}
-          <Link className={headerStyle.link} to="/application">Подача заявки</Link>{' '}
-          <Link className={headerStyle.link} to="/events">События</Link>
-          <Link className={headerStyle.link} to="/groups">Группы</Link>
-          <Link className={headerStyle.link} to="/login">Войти</Link>
-          <Link className={headerStyle.link} to="/registration">Зарегистрироваться</Link>
-        </div>
+        <nav>
+          <NavLink className={activeHandler} to="/about"> О создателе </NavLink>{' '}
+          <NavLink className={activeHandler} to="/" end> Главная </NavLink>{' '}
+          <NavLink className={activeHandler} to="/schedule">Расписание </NavLink>{' '}
+          <NavLink className={activeHandler} to="/application"> Подача заявки </NavLink>{' '}
+          <NavLink className={activeHandler} to="/events">События</NavLink>{' '}
+          <NavLink className={activeHandler} to="/groups">Группы</NavLink>{' '}
+          <NavLink className={activeHandler} to="/login">Войти</NavLink>{' '}
+          <NavLink className={activeHandler} to="/registration">Зарегистрироваться</NavLink>{' '}
+        </nav>
       ) : (
-        <div>
-          <Link className={headerStyle.link} to="/about">О создателе</Link>{' '}
-          <Link className={headerStyle.link} to="/">Главная</Link>{' '}
-          <Link className={headerStyle.link} to="/schedule">Расписание</Link>{' '}
-          <Link className={headerStyle.link} to="/application">Подача заявки</Link>{' '}
-          <Link className={headerStyle.link} to="/events">События</Link>
-          <Link className={headerStyle.link} to="/groups">Группы</Link>
-          {!user?.isAdmin && <Link className={headerStyle.link} to="/parents">Кабинет родителя</Link>}
+        <nav>
+          <NavLink className={activeHandler} to="/about"> О создателе </NavLink>{' '}
+          <NavLink className={activeHandler} to="/" end> Главная </NavLink>{' '}
+          <NavLink className={activeHandler} to="/schedule">Расписание </NavLink>{' '}
+          <NavLink className={activeHandler} to="/application"> Подача заявки </NavLink>{' '}
+          <NavLink className={activeHandler} to="/events">События</NavLink>{' '}
+          <NavLink className={activeHandler} to="/groups">Группы</NavLink>{' '}
+          {user?.isAdmin &&
+          <NavLink className={activeHandler} to="/parents">Кабинет родителя</NavLink>}
           <Link className={headerStyle.link} to="/" onClick={handleLogout}>Выйти</Link>
-        </div>
+        </nav>
       )}
     </nav>
   );
