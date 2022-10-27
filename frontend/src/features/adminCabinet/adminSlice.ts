@@ -35,7 +35,7 @@ const adminSlice = createSlice({
         const oldApplication = state.applicationsArr.find(
           (x) => x.id === action.payload.appId
         );
-        Object.assign(oldApplication!, action.payload);
+        oldApplication!.isChecked = action.payload.status;
       });
     }
 });
