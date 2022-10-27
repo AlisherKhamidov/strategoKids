@@ -6,12 +6,10 @@ export async function loadEvents(): Promise<Event[]> {
 }
 
 export async function addEvent(event: any):Promise<Event> {
-    console.log(event);
     const response = await fetch('/api/events', {
             method: 'POST',
             body: event,
         });
-        // console.log(response);
         const result = await response.json();
         return result.newEvent;
     }

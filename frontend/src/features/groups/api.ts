@@ -6,17 +6,10 @@ export async function loadGroups(): Promise<Group[]> {
   return response.json();
 }
 
-export async function createGroup(group: {
-  title: string;
-  img: string;
-  info: string;
-}): Promise<Group> {
+export async function createGroup(group: any): Promise<Group> {
   const response = await fetch('/api/groups', {
     method: 'POST',
-    body: JSON.stringify(group),
-    headers: {
-      'Content-Type': 'application/json',
-    },
+    body: group,
   });
   const result = await response.json();
   return result.newGroup;

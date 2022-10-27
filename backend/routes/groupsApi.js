@@ -1,6 +1,19 @@
 const groupsApi = require('express').Router();
+const multer = require('multer');
+const path = require('path');
 const { Group } = require('../db/models');
 
+const imagePath = path.join(process.env.PWD, 'public/images');
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, imagePath);
+  },
+  filename: (req, file, cb) => {
+    cb(null, file.originalname);
+  },
+});
+
+const upload = multer({ storage });
 groupsApi.get('/', async (req, res) => {
   try {
     const groups = await Group.findAll();
@@ -9,18 +22,26 @@ groupsApi.get('/', async (req, res) => {
     res.json({ success: false });
   }
 });
-groupsApi.post('/', (req, res) => {
-  try {
-    const { title, img, info } = req.body;
-    Group.create({
-      title,
-      img,
-      info,
-    }).then((newGroup) => res.json({ newGroup }));
-  } catch (error) {
-    res.json({ success: false });
-  }
-});
+groupsApi
+  .route('/')
+  .post(upload.array('image'), async (req, res) => {
+    try {
+      const image = req.files.map((el) => (el.originalname));
+      const imgStr = `./images/${image}`;
+      console.log('=====================');
+      console.log(imgStr);
+      const {
+        title, description,
+      } = req.body;
+      Group.create({
+        title,
+        img: imgStr,
+        info: description,
+      }).then((newGroup) => res.json({ newGroup }));
+    } catch (error) {
+      res.json({ success: false });
+    }
+  });
 groupsApi.delete('/:id', async (req, res) => {
   try {
     const { id } = req.params;
