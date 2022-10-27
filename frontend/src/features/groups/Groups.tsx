@@ -14,6 +14,7 @@ import groupsStyle from './Groups.module.css';
 function Groups(): JSX.Element {
   const groupsList = useSelector((state: RootState) => state.groups.groupsArr);
   const user = useSelector((state: RootState) => state.auth.user);
+  // console.log(isAdmin);
 
   const [title, setTitle] = useState('');
   const [img, setImg] = useState('');
@@ -42,36 +43,39 @@ function Groups(): JSX.Element {
   };
 
   return (
-    <>
-      <h1>Наши группы</h1>
-      {user?.isAdmin && (
-        <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            placeholder="Название группы"
-            value={title}
-            onChange={(event) => setTitle(event.target.value)}
-          />
 
-          <input
-            type="text"
-            placeholder="Загрузить изображение"
-            value={img}
-            onChange={(event) => setImg(event.target.value)}
-          />
-          <input
-            type="text"
-            placeholder="Указать описание"
-            value={info}
-            onChange={(event) => setInfo(event.target.value)}
-          />
-          <button type="submit">OK</button>
-        </form>
+    <div className={groupsStyle.container}>
+      {user?.isAdmin && (
+        <div className={groupsStyle.containerForm}>
+          <form onSubmit={handleSubmit} className={groupsStyle.inputForm}>
+            <input
+              className={groupsStyle.input}
+              type="text"
+              placeholder="Введите название группы"
+              value={title}
+              onChange={(event) => setTitle(event.target.value)}
+            />
+
+            <input
+              className={groupsStyle.input}
+              type="text"
+              placeholder="Добавьте ссылку не изображение"
+              value={img}
+              onChange={(event) => setImg(event.target.value)}
+            />
+            <input
+              className={groupsStyle.input}
+              type="text"
+              placeholder="Добавьте описание"
+              value={info}
+              onChange={(event) => setInfo(event.target.value)}
+            />
+            <button type="submit" className={groupsStyle.inputButton}>
+              Создать новую группу
+            </button>
+          </form>
+        </div>
       )}
-      <div>
-        Группы формируются в зависимости от уже имеющегося опыта
-      </div>
-      <div className={groupsStyle.container}>
         {groupsList.map((group) => (
           <GroupCard
             key={group.id}
@@ -79,9 +83,8 @@ function Groups(): JSX.Element {
             handleRemove={handleRemove}
             handleUpdate={handleUpdate}
           />
-        )).reverse()}
-      </div>
-    </>
+        ))}
+    </div>
   );
 }
 

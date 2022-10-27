@@ -10,6 +10,7 @@ import style2 from './Auth.module.css';
 import closed from './images/closed_eye.png';
 import open from './images/open_eye.png';
 import { login, resetLoginFormError } from './authSlice';
+import User from './types/User';
 
 function Login(): JSX.Element {
     const dispatch = useAppDispatch();
@@ -26,15 +27,19 @@ function Login(): JSX.Element {
     };
 
     const handleSubmit = React.useCallback(
-        async (event: React.FormEvent) => {
-            event.preventDefault();
-            const dispatchResult = await dispatch(
-                login({
-                    phone,
-                    password,
-                })
-            );
-            if (login.fulfilled.match(dispatchResult)) {
+      async (event: React.FormEvent) => {
+        event.preventDefault();
+        const dispatchResult = await dispatch(
+          login({
+            phone,
+            password,
+          })
+          );
+          if (login.fulfilled.match(dispatchResult)) {
+              const user = dispatchResult.payload as User;
+              if (user.isAdmin === true) {
+                navigate('/admin');
+              }
                 navigate('/');
             }
             if (login.rejected.match(dispatchResult)) {

@@ -6,18 +6,13 @@ const { Application } = require('../db/models');
 // /api/Applications
 router
   .route('/')
-  // .get((req, res) => {
-  //   Application.findAll({ raw: true })
-  //     .then((allApplications) => res.json(allApplications))
-  //     .catch((error) => res.status(500).json({ message: error.message }));
-  // })
   .post((req, res) => {
     const {
       kidName, birthDate, parentName, phone, experience,
     } = req.body;
     // console.log(kidName, phone);
-    console.log('🦄 🦄 🦄 🦄 🦄 🦄 🦄 🦄 🦄 🦄 🦄 🦄 🦄 🦄 🦄 ')
-    console.log(kidName, birthDate, parentName, phone, experience);
+    // console.log('🦄 🦄 🦄 🦄 🦄 🦄 🦄 🦄 🦄 🦄 🦄 🦄 🦄 🦄 🦄 ');
+    // console.log(kidName, birthDate, parentName, phone, experience);
     if (kidName.length <= 2) {
       res.status(404).json({ error: 'Введите полное имя, пожалуйста' });
     }
