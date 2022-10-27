@@ -76,7 +76,7 @@ function EventCard({ event, handleRemove,
             />
           </label>
           <label className={style.label}>
-            <div>Описание мероприятие</div>
+            <div>Описание мероприятия</div>
             <input
               className={style.input}
               type="text"
