@@ -76,7 +76,7 @@ function EventCard({ event, handleRemove,
             />
           </label>
           <label className={style.label}>
-            <div>Описание мероприятие</div>
+            <div>Описание мероприятия</div>
             <input
               className={style.input}
               type="text"
@@ -98,7 +98,7 @@ function EventCard({ event, handleRemove,
             type="button"
             onClick={toggleHandler(toggle)}
           >
-            {toggle ? 'О группе' : 'Назад'}
+            {toggle ? 'О событии' : 'Назад'}
           </button>
           <button className={style.actionButton3} type="button" onClick={() => handleRemove(event)}>
             Удалить
@@ -115,7 +115,7 @@ function EventCard({ event, handleRemove,
             type="button"
             onClick={toggleHandler(toggle)}
           >
-            {toggle ? 'О группе' : 'Назад'}
+            {toggle ? 'О событии' : 'Назад'}
           </button>
         </div>
       </>
