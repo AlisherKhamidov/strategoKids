@@ -8,5 +8,6 @@ export default async function sendApplication(data: Data) : Promise<void> {
           'Content-type': 'application/json',
       },
   });
-  const result = await response.json();
-      }
+ const result = await response.json();
+  console.log(result, 'RESPONSE FETCH');
+  }

@@ -11,7 +11,8 @@ telegramApi.post('/', async (req, res) => {
     await fetch(`https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}=@stratego_kids&parse_mode=HTML&text=${text}`);
     res.json({ success: true });
   } catch (error) {
-    res.json({ success: false });
+    console.error(error);
+    res.status(500).json({ success: false });
   }
 });
 
