@@ -40,6 +40,7 @@
 .whiteBtn:hover {
   color:white;
   background-color: #FFCD29;
+  cursor: pointer;
 }
 
 .titleBox {

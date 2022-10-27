@@ -41,6 +41,7 @@
 .whiteBtn:hover {
   color:white;
   background-color:#9747ff;
+  cursor: pointer;
 }
 
 .title {
