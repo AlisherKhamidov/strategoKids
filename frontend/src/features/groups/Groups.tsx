@@ -28,7 +28,8 @@ function Groups(): JSX.Element {
 
   const handleSubmit = (event: FormEvent): void => {
     event.preventDefault();
-    dispatch(createGroup({ title, img, info }));
+    const data = new FormData(event.target as HTMLFormElement);
+    dispatch(createGroup(data));
     setTitle('');
     setImg('');
     setInfo('');
@@ -47,23 +48,27 @@ function Groups(): JSX.Element {
     <div className={groupsStyle.container}>
       {user?.isAdmin && (
         <div className={groupsStyle.containerForm}>
-          <form onSubmit={handleSubmit} className={groupsStyle.inputForm}>
+          <form onSubmit={handleSubmit} className={groupsStyle.inputForm} encType="multipart/form-data">
             <input
               className={groupsStyle.input}
               type="text"
               placeholder="Введите название группы"
               value={title}
               onChange={(event) => setTitle(event.target.value)}
+              name="title"
             />
 
             <input
               className={groupsStyle.input}
-              type="text"
+              type="file"
               placeholder="Добавьте фото"
-              value={img}
+              // value={img}
               onChange={(event) => setImg(event.target.value)}
+              name="image"
+
             />
             <input
+              name="description"
               className={groupsStyle.input}
               type="text"
               placeholder="Добавьте описание"

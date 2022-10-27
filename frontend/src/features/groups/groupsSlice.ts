@@ -11,8 +11,8 @@ export const loadGroups = createAsyncThunk('groups/loadGroups', () =>
   api.loadGroups()
 );
 
-export const createGroup = createAsyncThunk('groups/createGroup', async (group: { title: string, img: string, info: string }) => {
-  const newGroup = await api.createGroup(group);
+export const createGroup = createAsyncThunk('groups/createGroup', async (data:any) => {
+  const newGroup = await api.createGroup(data);
   return newGroup;
 });
 
