@@ -10,11 +10,11 @@ import {
 import GroupCard from './GroupCard';
 import Group from './types/Group';
 import groupsStyle from './Groups.module.css';
-import Footer from '../footer/Footer';
 
 function Groups(): JSX.Element {
   const groupsList = useSelector((state: RootState) => state.groups.groupsArr);
   const user = useSelector((state: RootState) => state.auth.user);
+  // console.log(isAdmin);
 
   const [title, setTitle] = useState('');
   const [img, setImg] = useState('');
@@ -40,6 +40,7 @@ function Groups(): JSX.Element {
   };
 
   return (
+
     <div className={groupsStyle.container}>
       {user?.isAdmin && (
         <div className={groupsStyle.containerForm}>

@@ -7,7 +7,7 @@ import headerStyle from './Header.module.css';
 
 export default function Header(): JSX.Element {
   const user = useSelector((globalState: RootState) => globalState.auth.user);
-
+  // console.log(user)
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
@@ -53,6 +53,8 @@ export default function Header(): JSX.Element {
           <NavLink className={activeHandler} to="/groups">Группы</NavLink>{' '}
           {user?.isAdmin &&
           <NavLink className={activeHandler} to="/parents">Кабинет родителя</NavLink>}
+          {!user?.isAdmin &&
+          <NavLink className={activeHandler} to="/admin">Кабинет админа</NavLink>}
           <Link className={headerStyle.link} to="/" onClick={handleLogout}>Выйти</Link>
         </nav>
       )}
