@@ -1,9 +1,12 @@
+.footer {
+  background-color: #f7f5f5;
+}
 .container {
   display: flex;
   justify-content: space-around;
   flex-wrap:wrap;
   margin: 20px;
-
+  
 }
 
 .raw1 {
@@ -16,4 +19,10 @@
   display: flex;
   flex-direction: column;
   margin: 20px;
+}
+
+.logo img {
+  width: 35px;
+  height: 35px;
+  margin-right: 5px;
 }

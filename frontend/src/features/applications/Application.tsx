@@ -54,7 +54,7 @@ export default function Application(): JSX.Element {
 
         <label className={style.label} htmlFor="input__text">
           <span className={style.label__text}>Опыт</span>
-          <input className={style.input} id="input__text" {...register('experience')} placeholder="Опишите опыт вашего ребёнка в шахматах" />
+          <input className={style.input} id="input__text" {...register('experience')} placeholder="Опишите опыт в шахматах" />
         </label>
 
         <div className={style.btnPosition}>

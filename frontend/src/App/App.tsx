@@ -16,7 +16,9 @@ import Schedule from '../features/schedule/Schedule';
 import Art from '../features/art/Art';
 import Admin from '../features/adminCabinet/Admin';
 import ParentCabinet from '../features/parentCabinet/ParentCabinet';
+
 // import { selectLogin } from '../features/auth/selectors';
+import Director from '../features/director/Director';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -37,6 +39,7 @@ function App(): JSX.Element {
     <div className="App">
       <Routes>
         <Route element={<Layout />}>
+          <Route path="/about" element={<Director />} />
           <Route path="/" element={<MainPage />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="/application" element={<Application />} />

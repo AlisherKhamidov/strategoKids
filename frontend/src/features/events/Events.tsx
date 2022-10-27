@@ -6,13 +6,15 @@ import { RootState, useAppDispatch } from '../../store';
 import Event from './types/Event';
 import EventCard from './EventCard';
 import { addEvent, loadEvents, deleteEvent,
-  // updateEvent
+  updateEvent
 } from './eventsSlice';
+import style from './Events.module.css';
 
 export default function Events(): JSX.Element {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [photo, setPhoto] = useState('');
+  const user = useSelector((state: RootState) => state.auth.user);
 
     const eventsList = useSelector((state: RootState) => state.events.eventsArr);
 
@@ -28,45 +30,48 @@ export default function Events(): JSX.Element {
   const handleRemove = (eventToDelete: Event): void => {
     dispatch(deleteEvent(eventToDelete.id));
   };
-  // const handleUpdate = (newEvent: Event): void => {
-  //     dispatch(updateEvent(newEvent));
-  //   };
+  const handleUpdate = (newEvent: Event): void => {
+      dispatch(updateEvent(newEvent));
+    };
 
   return (
-    <>
-      <h1>Здесь будут события ( или мероприятия)</h1>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="название"
-          value={title}
-          onChange={(event) => setTitle(event.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="описание"
-          value={description}
-          onChange={(event) => setDescription(event.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="ссылка на фото"
-          value={photo}
-          onChange={(event) => setPhoto(event.target.value)}
-        />
-        <button type="submit"> Создать мероприятие</button>
-      </form>
-      <h1>Events</h1>
-      <div className="ui cards">
+    <div className={style.container}>
+      {user?.isAdmin && (
+      <div className={style.containerForm}>
+        <form onSubmit={handleSubmit} className={style.inputForm}>
+          <input
+            className={style.input}
+            type="text"
+            placeholder="Название события"
+            value={title}
+            onChange={(event) => setTitle(event.target.value)}
+          />
+          <input
+            className={style.input}
+            type="text"
+            placeholder="Введите описание"
+            value={description}
+            onChange={(event) => setDescription(event.target.value)}
+          />
+          <input
+            className={style.input}
+            type="text"
+            placeholder="Ссылка на фото"
+            value={photo}
+            onChange={(event) => setPhoto(event.target.value)}
+          />
+          <button className={style.inputButton} type="submit"> Создать мероприятие</button>
+        </form>
+      </div>
+    )}
       { eventsList.map((event) => (
       <EventCard
         key={event.id}
         event={event}
         handleRemove={handleRemove}
-        // handleUpdate={handleUpdate}
+        handleUpdate={handleUpdate}
       />
     )) }
-      </div>
-    </>
+    </div>
   );
 }

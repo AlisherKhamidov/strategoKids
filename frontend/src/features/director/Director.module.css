@@ -1,0 +1,34 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    align-content: center;
+    font-size: 17px;
+    /* margin: 40px; */
+}
+
+p {
+  text-align: left;
+  font-family: "Inter";
+  padding-left: 150px;
+  padding-right: 150px;
+  text-align: justify;
+  /* word-break: break-all; */
+  overflow-wrap: break-word;
+  text-overflow: ellipsis;
+  line-clamp: 3;
+}
+
+.container3 {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    background-color: #e3f2fc;
+}
+
+@font-face {
+    font-family: "Inter"; 
+    src: url("./fonts/Inter/Inter-V.ttf") format("truetype"); 
+    font-style: medium; 
+    font-weight: normal; 
+    } 

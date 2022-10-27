@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import * as api from './api';
-import Kid, { KidId } from './types/Kid';
+import KidData from './types/KidData';
 import EventsListState from './types/KidsState';
 
 const initialState: EventsListState = {
@@ -10,8 +10,9 @@ const initialState: EventsListState = {
 export const loadKids = createAsyncThunk('kids/loadKids', () =>
   api.loadKids()
 );
- export const addKid = createAsyncThunk('kids/addKid',
-async (kid: Kid) => {
+
+export const addKid = createAsyncThunk('kids/addKid',
+async (kid: KidData) => {
  const newKid = await api.addKid(kid);
  return newKid;
 }
