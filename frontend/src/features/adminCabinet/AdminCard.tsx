@@ -1,7 +1,5 @@
-import { useAppDispatch } from '../../store';
 import Data from '../applications/types/Data';
 import adminStyle from './AdminCard.module.css';
-import { changeStatus } from './adminSlice';
 
 interface AdminProp {
   handleStatusChange: (adminData: { status: boolean, appId: number }) => void;
@@ -27,7 +25,8 @@ function AdminCard({ application, handleStatusChange }: AdminProp): JSX.Element 
               onClick={() => handleStatusChange(
                 { status: !application.isChecked, appId: application.id }
               )}
-            >Обработано
+            >
+              {application.isChecked ? 'Вернуть из архива' : 'Обработать'}
             </button>
         </div>
     );

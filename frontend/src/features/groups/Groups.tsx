@@ -59,7 +59,7 @@ function Groups(): JSX.Element {
             <input
               className={groupsStyle.input}
               type="text"
-              placeholder="Добавьте ссылку не изображение"
+              placeholder="Добавьте фото"
               value={img}
               onChange={(event) => setImg(event.target.value)}
             />

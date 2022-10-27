@@ -8,17 +8,6 @@
     /* margin: 40px; */
 }
 
-p {
-  text-align: left;
-  font-family: "Inter";
-  padding-left: 150px;
-  padding-right: 150px;
-  text-align: justify;
-  /* word-break: break-all; */
-  overflow-wrap: break-word;
-  text-overflow: ellipsis;
-  line-clamp: 3;
-}
 
 .container3 {
     padding-top: 1px;
