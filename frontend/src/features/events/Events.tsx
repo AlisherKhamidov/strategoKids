@@ -14,6 +14,10 @@ export default function Events(): JSX.Element {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [photo, setPhoto] = useState('');
+
+  const [checked, setChecked] = useState(false);
+  const handleClick = () :void => setChecked(!checked);
+
   const user = useSelector((state: RootState) => state.auth.user);
 
     const eventsList = useSelector((state: RootState) => state.events.eventsArr);
@@ -25,7 +29,10 @@ export default function Events(): JSX.Element {
 
   const handleSubmit = (event: FormEvent): void => {
     event.preventDefault();
-    dispatch(addEvent({ title, description, photo, isTournament: true }));
+    dispatch(addEvent({ title, description, photo, isTournament: checked }));
+    setTitle('');
+    setDescription('');
+    setPhoto('');
   };
   const handleRemove = (eventToDelete: Event): void => {
     dispatch(deleteEvent(eventToDelete.id));
@@ -60,6 +67,10 @@ export default function Events(): JSX.Element {
             value={photo}
             onChange={(event) => setPhoto(event.target.value)}
           />
+          <div className={style.inputSpecial}>
+          <label htmlFor="isTournament"> Турнир</label>
+           <input onClick={handleClick} className={style.input} type="checkbox" id="isTournament" name="tournament" value="true" />
+          </div>
           <button className={style.inputButton} type="submit"> Создать мероприятие</button>
         </form>
       </div>
@@ -71,7 +82,7 @@ export default function Events(): JSX.Element {
         handleRemove={handleRemove}
         handleUpdate={handleUpdate}
       />
-    )) }
+    )).reverse() }
     </div>
   );
 }
