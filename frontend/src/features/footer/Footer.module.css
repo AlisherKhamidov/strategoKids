@@ -1,9 +1,12 @@
+.footer {
+  background-color: #f7f5f5;
+}
 .container {
   display: flex;
   justify-content: space-around;
   flex-wrap:wrap;
   margin: 20px;
-
+  
 }
 
 .raw1 {

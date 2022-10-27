@@ -15,7 +15,6 @@ import Footer from '../footer/Footer';
 function Groups(): JSX.Element {
   const groupsList = useSelector((state: RootState) => state.groups.groupsArr);
   const user = useSelector((state: RootState) => state.auth.user);
-  console.log(user);
 
   const [title, setTitle] = useState('');
   const [img, setImg] = useState('');
@@ -67,7 +66,9 @@ function Groups(): JSX.Element {
           <button type="submit">OK</button>
         </form>
       )}
-      <h3>Группы формируются в зависимости от уже имеющегося опыта:</h3>
+      <div>
+        Группы формируются в зависимости от уже имеющегося опыта
+      </div>
       <div className={groupsStyle.container}>
         {groupsList.map((group) => (
           <GroupCard
@@ -79,13 +80,6 @@ function Groups(): JSX.Element {
           />
         ))}
       </div>
-      <div>
-        <h4>И в зависимости от возраста:  школьники,  дошкольники</h4>
-      </div>
-      <div>
-        Занятия проводятся один/два/три раза в неделю согласно расписанию
-      </div>
-      <Footer />
     </>
   );
 }
