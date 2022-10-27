@@ -22,3 +22,8 @@
     margin: 4px 4px 20px 8px;
     border-radius: 10px;
 }
+
+.app__btn:hover {
+    background-color: #ED6A1D;
+    cursor: pointer;
+}
