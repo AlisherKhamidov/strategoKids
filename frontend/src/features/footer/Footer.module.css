@@ -24,3 +24,12 @@
   height: 35px;
   margin-right: 5px;
 }
+.map {
+  height: 240px;
+  width: 240px;
+  margin-left: 12%;
+}
+/* .place {
+  height: 400px;
+  width: 400px
+} */
