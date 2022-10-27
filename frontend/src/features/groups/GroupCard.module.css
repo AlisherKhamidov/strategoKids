@@ -1,3 +1,8 @@
+::placeholder {
+  font-size: 15px;
+  color: #9e9999;
+  font-family: "Inter";
+}
 .card {
   margin: 25px;
   position: relative;
@@ -124,11 +129,12 @@
   border: 1px solid rgb(207, 201, 201);
   border-radius: 7px;
   font-family: "Inter";
-  font-size: 20px;
+  font-size: 15px;
   padding: 5px;
   margin-right: 20px;
   margin-left: 20px;
   height: fit-content;
+  color: #9e9999;
 }
 
 .cardBlue {
@@ -143,6 +149,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  
 }
 
 .label {
