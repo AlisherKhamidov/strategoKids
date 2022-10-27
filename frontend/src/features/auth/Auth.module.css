@@ -2,8 +2,8 @@
     width: 25px;
     height: 25px;
     position: absolute;
-    top: 50px;
-    left: 367px;
+    top: 60%;
+    left: 85%;
 }
 
 .closed:hover {
@@ -15,6 +15,11 @@
     width: 25px;
     height: 25px;
     position: absolute;
-    top: 50px;
-    left: 367px;
+    top: 60%;
+    left: 85%;
 }
+
+
+
+
+

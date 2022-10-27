@@ -10,12 +10,11 @@ import {
 import GroupCard from './GroupCard';
 import Group from './types/Group';
 import groupsStyle from './Groups.module.css';
-import Footer from '../footer/Footer';
 
 function Groups(): JSX.Element {
   const groupsList = useSelector((state: RootState) => state.groups.groupsArr);
   const user = useSelector((state: RootState) => state.auth.user);
-  console.log(user);
+  // console.log(isAdmin);
 
   const [title, setTitle] = useState('');
   const [img, setImg] = useState('');
@@ -30,6 +29,9 @@ function Groups(): JSX.Element {
   const handleSubmit = (event: FormEvent): void => {
     event.preventDefault();
     dispatch(createGroup({ title, img, info }));
+    setTitle('');
+    setImg('');
+    setInfo('');
   };
 
   const handleRemove = (groupToDelete: Group): void => {
@@ -41,52 +43,48 @@ function Groups(): JSX.Element {
   };
 
   return (
-    <>
-      <h1>Наши группы</h1>
-      {user?.isAdmin && (
-        <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            placeholder="Название группы"
-            value={title}
-            onChange={(event) => setTitle(event.target.value)}
-          />
 
-          <input
-            type="text"
-            placeholder="Загрузить изображение"
-            value={img}
-            onChange={(event) => setImg(event.target.value)}
-          />
-          <input
-            type="text"
-            placeholder="Указать описание"
-            value={info}
-            onChange={(event) => setInfo(event.target.value)}
-          />
-          <button type="submit">OK</button>
-        </form>
+    <div className={groupsStyle.container}>
+      {user?.isAdmin && (
+        <div className={groupsStyle.containerForm}>
+          <form onSubmit={handleSubmit} className={groupsStyle.inputForm}>
+            <input
+              className={groupsStyle.input}
+              type="text"
+              placeholder="Введите название группы"
+              value={title}
+              onChange={(event) => setTitle(event.target.value)}
+            />
+
+            <input
+              className={groupsStyle.input}
+              type="text"
+              placeholder="Добавьте ссылку не изображение"
+              value={img}
+              onChange={(event) => setImg(event.target.value)}
+            />
+            <input
+              className={groupsStyle.input}
+              type="text"
+              placeholder="Добавьте описание"
+              value={info}
+              onChange={(event) => setInfo(event.target.value)}
+            />
+            <button type="submit" className={groupsStyle.inputButton}>
+              Создать новую группу
+            </button>
+          </form>
+        </div>
       )}
-      <h3>Группы формируются в зависимости от уже имеющегося опыта:</h3>
-      <div className={groupsStyle.container}>
         {groupsList.map((group) => (
           <GroupCard
             key={group.id}
             group={group}
             handleRemove={handleRemove}
             handleUpdate={handleUpdate}
-            // isAdmin={isAdmin}
           />
-        ))}
-      </div>
-      <div>
-        <h4>И в зависимости от возраста:  школьники,  дошкольники</h4>
-      </div>
-      <div>
-        Занятия проводятся один/два/три раза в неделю согласно расписанию
-      </div>
-      <Footer />
-    </>
+        )).reverse()}
+    </div>
   );
 }
 

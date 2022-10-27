@@ -10,7 +10,8 @@ const initialState: EventsListState = {
 export const loadKids = createAsyncThunk('kids/loadKids', () =>
   api.loadKids()
 );
- export const addKid = createAsyncThunk('kids/addKid',
+
+export const addKid = createAsyncThunk('kids/addKid',
 async (kid: KidData) => {
  const newKid = await api.addKid(kid);
  return newKid;
