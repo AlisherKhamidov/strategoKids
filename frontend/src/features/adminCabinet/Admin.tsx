@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+/* eslint-disable react/jsx-no-bind */
+import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState, useAppDispatch } from '../../store';
-import Data from '../applications/types/Data';
 import styleAdmin from './Admin.module.css';
 import AdminCard from './AdminCard';
 import { changeStatus, loadedApplications } from './adminSlice';
