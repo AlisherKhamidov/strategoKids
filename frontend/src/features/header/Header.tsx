@@ -34,7 +34,7 @@ export default function Header(): JSX.Element {
     <nav className={headerStyle.container}>
       {!user ? (
         <nav>
-          <NavLink className={activeHandler} to="/about"> О создателе </NavLink>{' '}
+          <NavLink className={activeHandler} to="/about"> О школе </NavLink>{' '}
           <NavLink className={activeHandler} to="/" end> Главная </NavLink>{' '}
           <NavLink className={activeHandler} to="/schedule">Расписание </NavLink>{' '}
           <NavLink className={activeHandler} to="/application"> Подача заявки </NavLink>{' '}
@@ -45,7 +45,7 @@ export default function Header(): JSX.Element {
         </nav>
       ) : (
         <nav>
-          <NavLink className={activeHandler} to="/about"> О создателе </NavLink>{' '}
+          <NavLink className={activeHandler} to="/about"> О школе </NavLink>{' '}
           <NavLink className={activeHandler} to="/" end> Главная </NavLink>{' '}
           <NavLink className={activeHandler} to="/schedule">Расписание </NavLink>{' '}
           {!user?.isAdmin &&

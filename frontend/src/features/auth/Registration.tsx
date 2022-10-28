@@ -121,7 +121,7 @@ function Registration(): JSX.Element {
           {error === 'Пароли не совпадают' && <p style={{ color: 'red' }}>{error}</p>}
         <div className={style.btnPosition}>
           <button className={style.button} type="submit">
-          Отправить заявку
+          Зарегистрироваться
           </button>
         </div>
       </form>

@@ -10,10 +10,11 @@ router
     const {
       kidName, birthDate, parentName, phone, experience,
     } = req.body;
+
     // console.log(kidName, phone);
     // console.log('🦄 🦄 🦄 🦄 🦄 🦄 🦄 🦄 🦄 🦄 🦄 🦄 🦄 🦄 🦄 ');
     // console.log(kidName, birthDate, parentName, phone, experience);
-    if (kidName.length <= 2) {
+    if (kidName.length < 2) {
       res.status(404).json({ error: 'Введите полное имя, пожалуйста' });
     }
     if (phone.length < 11) {
