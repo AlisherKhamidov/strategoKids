@@ -1,28 +1,23 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import * as api from './api';
-import KidData from './types/KidData';
-import EventsListState from './types/KidsState';
+import Like from './types/Like';
+import LikeData from './types/LikeData';
+import EventsListState from './types/LikeState';
 
 const initialState: EventsListState = {
-  kidsArr: [],
+  likesArr: [],
 };
 
-export const loadKids = createAsyncThunk('kids/loadKids', () =>
-  api.loadKids()
+export const loadLikes = createAsyncThunk('likes/loadLikes', () =>
+  api.loadLikes()
 );
 
-export const addKid = createAsyncThunk('kids/addKid',
-async (kid: KidData) => {
- const newKid = await api.addKid(kid);
- return newKid;
+export const addLike = createAsyncThunk('likes/addLike',
+async (like: LikeData) => {
+ const newLike = await api.addLike(like);
+ return newLike;
 }
 );
-
-// export const loadMyKids = createAsyncThunk('kids/loadMyKids', (event_id) =>
-//   api.loadKids().then((data) =>
-//   data.filter((kidd) => kidd? === event_id)
-// ));
-
 // export const deleteEvent = createAsyncThunk('events/deleteEvent', async (id: EventId) => {
 //   await api.deleteEvent(id);
 //   return id;
@@ -33,20 +28,17 @@ async (kid: KidData) => {
 //   return event;
 // });
 
-const kidsSlice = createSlice({
-  name: 'kids',
+const likesSlice = createSlice({
+  name: 'likes',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(loadKids.fulfilled, (state, action) => {
-      state.kidsArr = action.payload;
+    builder.addCase(loadLikes.fulfilled, (state, action) => {
+      state.likesArr = action.payload;
     })
-    .addCase(addKid.fulfilled, (state, action) => {
-      state.kidsArr.push(action.payload);
+    .addCase(addLike.fulfilled, (state, action) => {
+      state.likesArr.push(action.payload);
     });
-    // .addCase(loadMyKids.fulfilled, (state, action) => {
-    //   state.kidsArr = action.payload;
-    // });
     // .addCase(deleteEvent.fulfilled, (state, action) => {
     //   state.eventsArr = state.eventsArr.filter((event) => event.id !== action.payload);
     // })
@@ -59,4 +51,4 @@ const kidsSlice = createSlice({
   },
 });
 
-export default kidsSlice.reducer;
+export default likesSlice.reducer;

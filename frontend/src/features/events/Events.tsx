@@ -38,6 +38,7 @@ export default function Events(): JSX.Element {
     setDescription('');
     setPhoto('');
   };
+
   const handleRemove = (eventToDelete: Event): void => {
     dispatch(deleteEvent(eventToDelete.id));
   };
