@@ -61,8 +61,8 @@ export default function ParentCabinet(): JSX.Element {
         </label>
 
         <label className={style.label} htmlFor="input__photo">
-          <span className={style.label__text}>Ссылка на фото</span>
-          <input className={style.input} id="input__photo" {...register('photo')} placeholder="ссылка на фото" />
+          {/* <span className={style.label__text}>Ссылка на фото</span> */}
+          <input hidden className={style.input} id="input__photo" {...register('photo')} placeholder="ссылка на фото" />
         </label>
 
         <div className={style.btnPosition}>

@@ -10,23 +10,26 @@ export default function Application(): JSX.Element {
   const { register, handleSubmit, formState: { errors }, setError, } = useForm<Data>();
   const navigate = useNavigate();
   const submit = handleSubmit(async (data: Data) => {
-      createApplication(data).catch((error) => {
-        if (error === 'Введите полное имя, пожалуйста') {
-          setError('kidName', {
-            type: 'multiple',
-            message: error,
-          });
-        }
-         if (error === 'Введите корректный номер, пожалуйста') {
+    createApplication(data)
+    .then(() => {
+      sendApplication(data);
+      navigate('/');
+    })
+    .catch((error) => {
+      if (error === 'Введите полное имя, пожалуйста') {
+        setError('kidName', {
+          type: 'multiple',
+          message: error,
+        });
+      }
+      if (error === 'Введите корректный номер, пожалуйста') {
           setError('phone', {
             type: 'multiple',
             message: error,
           });
         }
       });
-      sendApplication(data);
-      navigate('/');
-  });
+    });
   return (
     <div className={style.form__container}>
       <form className={style.forma} onSubmit={submit}>

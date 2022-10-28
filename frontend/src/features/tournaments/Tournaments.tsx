@@ -13,6 +13,8 @@ import { loadEvents } from '../events/eventsSlice';
 
 export default function Tournaments(): JSX.Element {
   const eventsList = useSelector((state: RootState) => state.events.eventsArr);
+  const user = useSelector((state: RootState) => state.auth.user);
+
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(loadEvents());
@@ -30,9 +32,13 @@ export default function Tournaments(): JSX.Element {
 
     </div>
     <div className={tournamentsStyle.container3}>
-      <button className={tournamentsStyle.orangeButton} type="button" onClick={() => navigate('/events')}>
-      Записаться на турнир
-      </button>
+      {user && !user.isAdmin ? (
+         <button className={tournamentsStyle.orangeButton} type="button" onClick={() => navigate('/events')}>
+         Записаться на турнир
+         </button>
+      ) : (
+        null
+      )}
     </div>
     <div className={tournamentsStyle.container2}>
 
