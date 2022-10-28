@@ -52,7 +52,7 @@ function Groups(): JSX.Element {
             <input
               className={groupsStyle.input}
               type="text"
-              placeholder="Введите название группы"
+              placeholder="Название группы"
               value={title}
               onChange={(event) => setTitle(event.target.value)}
               name="title"
@@ -71,7 +71,7 @@ function Groups(): JSX.Element {
               name="description"
               className={groupsStyle.input}
               type="text"
-              placeholder="Добавьте описание"
+              placeholder="Ссылка на фото"
               value={info}
               onChange={(event) => setInfo(event.target.value)}
             />

@@ -1,0 +1,1 @@
+{"cookie":{"originalMaxAge":43200000,"expires":"2022-10-28T04:42:31.567Z","httpOnly":true,"path":"/"},"user":{"id":1,"name":"admin","email":"admin@admin","password":"$2b$10$0wdcsCnDyXm4/rFAUY2uV.OzSPaujOhLPvL3s7PuxZaKYBEi9OFby","phone":"12345","isAdmin":true,"createdAt":"2022-10-27T13:32:06.683Z","updatedAt":"2022-10-27T13:32:06.683Z"},"__lastAccess":1666888951568}
