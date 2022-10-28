@@ -1,11 +1,12 @@
 /* eslint-disable @typescript-eslint/no-shadow */
-import React, { ChangeEvent, FormEvent, useState } from 'react';
+import React, { ChangeEvent, FormEvent, useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import Event from './types/Event';
 import style from './EventCard.module.css';
 import { RootState, useAppDispatch } from '../../store';
 import { addLike } from '../likes/likesSlice';
 import LikeData from '../likes/types/LikeData';
+import { loadEvents } from './eventsSlice';
 
 interface EventPops {
   event: Event;
@@ -29,6 +30,7 @@ function EventCard({ event, handleRemove,
   const [toggle, setToggle] = useState(true);
   const [choice, setChoice] = useState(true);
   const dispatch = useAppDispatch();
+  useEffect(() => { dispatch(loadEvents()); }, [dispatch]);
   const toggleHandler = (prev: boolean) => () => {
     setToggle(!prev);
     if (!choice) { setChoice(true); }

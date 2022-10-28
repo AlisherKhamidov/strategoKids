@@ -47,8 +47,26 @@
 }
 
 .kid__name {
-    font-size: 22px;
+    font-size: 26px;
     margin-bottom: 15px;
     font-family: "Inter";
     font-weight: bolder;
+}
+
+.text {
+    font-size: 22px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    font-weight:bold;
+}
+
+.list {
+    margin-bottom: 7px;
+    padding-left: 15px;
+    text-align: left;
+}
+
+.string {
+    margin: 3px;
+    font-style: italic;
 }
