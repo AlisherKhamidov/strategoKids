@@ -1,4 +1,4 @@
-.app__card {
+.kid__card {
     display: flex;
     justify-content: space-around;
     flex-direction: column;
@@ -9,7 +9,8 @@
     border-radius: 20px;
     font-size: 20px;
 }
-.app__btn {
+
+.kid__btn__first {
     display: flex;
     justify-content: space-around;
     color:rgb(255, 255, 255);
@@ -22,13 +23,30 @@
     margin: 4px 4px 20px 8px;
     border-radius: 10px;
 }
-
-.app__btn:hover {
-    background-color: #ED6A1D;
+.kid__btn__first:hover {
+    background-color: #fcbf0b; 
+    cursor: pointer;
+}
+ 
+.kid__btn__second {
+    display: flex;
+    justify-content: space-around;
+    color:rgb(255, 255, 255);
+    background-color: #2D53A1;
+    border: none;
+    padding: 15px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 4px 4px 20px 8px;
+    border-radius: 10px;
+}
+.kid__btn__second:hover {
+    background-color: #ED6A1D; 
     cursor: pointer;
 }
 
-.name {
+.kid__name {
     font-size: 22px;
     margin-bottom: 15px;
     font-family: "Inter";

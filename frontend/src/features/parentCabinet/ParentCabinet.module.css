@@ -88,3 +88,20 @@
   font-weight: normal; 
   } 
 
+.parent__header {
+  background-color: #BDE3FF;
+    color: black;
+    display: flex;
+    flex-flow: row nowrap;
+    height: 150px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+}
+
+.children {
+  display: flex;
+  justify-content:space-around;
+  flex-direction:row;
+}

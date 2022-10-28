@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useSelector } from 'react-redux';
 import { RootState, useAppDispatch } from '../../store';
-
+import KidCard from '../kids/KidCard';
 import { addKid, loadKids } from '../kids/kidsSlice';
 import KidData from '../kids/types/KidData';
 import style from './ParentCabinet.module.css';
@@ -24,13 +24,18 @@ export default function ParentCabinet(): JSX.Element {
   });
   return (
     <div>
-      <div>Мои дети:</div>
+      <div className={style.parent__header}>Мои дети:</div>
+      <div className={style.children}>
       {
-        kidsList?.filter((kid) => user?.id === kid.user_id).map((kid) =>
-        <p>{kid.name}</p>
-
-        )
+        kidsList?.filter((kid) => user?.id === kid.user_id).map((kid) => (
+        // <p>{kid.name}</p>
+        <KidCard
+          key={kid.id}
+          kid={kid}
+        />
+        ))
       }
+      </div>
     <div className={style.form__container}>
       <form className={style.forma} onSubmit={submit}>
         <label className={style.label} htmlFor="input__kid">
