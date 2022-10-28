@@ -103,6 +103,26 @@
   margin-bottom: 30px;
 }
 
+.actionButton5 {
+  color:black;
+  background-color: white;
+  border: none;
+  padding: 15px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 15px;
+  border-radius: 10px;
+  z-index: 5;
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.actionButton5:hover {
+  color:white;
+  background-color: #ED6A1D;
+}
+
+
 .form {
   align-self:center;
   background-color: #BDE3FF;
@@ -137,7 +157,22 @@
   background-color: #BDE3FF;
   position:absolute;
   border-radius: 10px;
-  z-index: 0;
+  z-index: 1;
+  top: 0%; 
+  left: 0%;
+  height: inherit;
+  width: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.cardChoice {
+  background-color: #f7f5f5;
+  position:absolute;
+  border-radius: 10px;
+  z-index: 2;
   top: 0%; 
   left: 0%;
   height: inherit;

@@ -6,6 +6,7 @@ import groupsSlice from './features/groups/groupsSlice';
 import eventsSlice from './features/events/eventsSlice';
 import kidsSlice from './features/kids/kidsSlice';
 import adminSlice from './features/adminCabinet/adminSlice';
+import likesSlice from './features/likes/likesSlice';
 
 const store = configureStore({
   reducer: {
@@ -14,6 +15,7 @@ const store = configureStore({
    events: eventsSlice,
    kids: kidsSlice,
    applications: adminSlice,
+   likes: likesSlice,
   },
 });
 
