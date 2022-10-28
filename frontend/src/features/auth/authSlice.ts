@@ -18,7 +18,7 @@ const initialState: AuthState = {
     async (data: RegisterData) => {
       // eslint-disable-next-line no-console
       console.log(data.phone.length);
-      if (data.name.length <= 2) {
+      if (data.name.length < 2) {
         throw new Error('Введите полное имя, пожалуйста');
       }
       if (data.phone.length < 11) {
