@@ -71,7 +71,8 @@
 }
 
 .inputButton:hover {
-  color: #BDE3FF;
+  background-color: #9747FF;
+  cursor: pointer;
 }
 
 ::placeholder { 

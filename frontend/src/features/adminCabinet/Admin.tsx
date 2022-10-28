@@ -27,7 +27,7 @@ dispatch(changeStatus(adminData));
             <div className={styleAdmin.admin__header}>
                 <p>Заявки на уроки</p>
             </div>
-            <div>
+            <div className={styleAdmin.app__map}>
                 {ApplicationsList.filter((el) => !el.isChecked).map((application) => (
                     <AdminCard
                       key={application.id}
@@ -36,11 +36,11 @@ dispatch(changeStatus(adminData));
                     />
                 ))}
             </div>
-            <div className={styleAdmin.admin__header}>
+            <div className={styleAdmin.admin__header_two}>
                 <p>Обработанные заявки</p>
             </div>
 
-            <div>
+            <div className={styleAdmin.app__map}>
             {ApplicationsList.filter((el) => el.isChecked).map((application) => (
                     <AdminCard
                       handleStatusChange={handleStatusChange}

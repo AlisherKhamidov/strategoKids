@@ -14,3 +14,21 @@
     justify-content: center;
     font-size: 40px;
 }
+
+.admin__header_two {
+    background-color:#FCBF0B ;
+    color: black;
+    display: flex;
+    flex-flow: row nowrap;
+    height: 150px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+}
+
+.app__map {
+    display: flex;
+    justify-content:space-around;
+    flex-direction:row;
+}
