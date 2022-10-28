@@ -52,9 +52,9 @@ export default function Header(): JSX.Element {
           <NavLink className={activeHandler} to="/application">Подача заявки</NavLink>}
           <NavLink className={activeHandler} to="/events">События</NavLink>{' '}
           <NavLink className={activeHandler} to="/groups">Группы</NavLink>{' '}
+          <Link className={headerStyle.link} to="/" onClick={handleLogout}>Выйти</Link>
           {!user?.isAdmin &&
           <NavLink className={activeHandler} to="/parents">Кабинет родителя</NavLink>}
-          <Link className={headerStyle.link} to="/" onClick={handleLogout}>Выйти</Link>
           {user?.isAdmin &&
           <NavLink className={activeHandler} to="/admin">Кабинет админа</NavLink>}
         </nav>

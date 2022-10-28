@@ -53,7 +53,8 @@
   margin-bottom: 30px;
 }
 .actionButton1:hover {
-  color: #BDE3FF;
+  background-color: #FCBF0B ;
+  cursor: pointer;
 }
 
 .actionButton2 {
@@ -69,7 +70,8 @@
   margin-bottom: 30px;
 }
 .actionButton2:hover {
-  color: #BDE3FF;
+  background-color: #FCBF0B ;
+  cursor: pointer;
 }
 
 .actionButton3 {
@@ -86,7 +88,8 @@
   margin-bottom: 30px;
 }
 .actionButton3:hover {
-  color: #BDE3FF;
+  background-color: #FCBF0B ;
+  cursor: pointer;
 }
 
 .actionButton4 {
@@ -101,6 +104,10 @@
   z-index: 3;
   position: relative;
   margin-bottom: 30px;
+}
+.actionButton4:hover {
+  cursor: pointer;
+  background-color:#2D53A1;
 }
 
 .actionButton5 {
