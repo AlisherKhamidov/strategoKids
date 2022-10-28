@@ -117,8 +117,8 @@ function Registration(): JSX.Element {
           <span className={style.label__text}>Подтвердите пароль</span>
           <input className={error === 'Пароли не совпадают' ? style.input__error : style.input} id="repPass" type={second ? 'text' : 'password'} value={passwordRepeat} onChange={handlePasswordRepeatChange} required placeholder="Пароль" />
           <img onClick={() => toggleSecond()} className={style2.closed} src={second ? open : closed} alt="eye" />
-          {error === 'Пароли не совпадают' && <p style={{ color: 'red' }}>{error}</p>}
         </label>
+          {error === 'Пароли не совпадают' && <p style={{ color: 'red' }}>{error}</p>}
         <div className={style.btnPosition}>
           <button className={style.button} type="submit">
           Отправить заявку

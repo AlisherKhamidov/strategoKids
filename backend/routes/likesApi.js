@@ -12,16 +12,20 @@ likesApi.get('/', async (req, res) => {
   }
 });
 
-likesApi.post('/', (req, res) => {
+likesApi.post('/', async (req, res) => {
   try {
     const {
       kid_id,
       event_id,
     } = req.body;
-    Like.create({
-      kid_id,
-      event_id,
-    }).then((newLike) => res.json({ newLike }));
+    const likes = await Like.findAll({ where: { kid_id, event_id }, raw: true });
+
+    if (!likes.length) {
+      Like.create({
+        kid_id,
+        event_id,
+      }).then((newLike) => res.json({ newLike }));
+    }
   } catch (error) {
     res.json({ success: false });
   }
