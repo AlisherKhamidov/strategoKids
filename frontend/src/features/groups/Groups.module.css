@@ -37,6 +37,7 @@
   margin-right: 20px;
   margin-left: 20px;
   height: fit-content;
+  background-color: white;
 }
 
 .inputButton {
@@ -54,7 +55,8 @@
 }
 
 .inputButton:hover {
-  color: #BDE3FF;
+  background-color: #9747FF;
+  cursor: pointer;
 }
 
 

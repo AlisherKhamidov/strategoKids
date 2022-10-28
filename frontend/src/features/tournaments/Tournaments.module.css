@@ -56,4 +56,5 @@
 .orangeButton:hover {
   background-color:#2D53A1; 
   color: white;
+  cursor: pointer;
 }

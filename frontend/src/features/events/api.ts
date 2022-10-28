@@ -5,19 +5,11 @@ export async function loadEvents(): Promise<Event[]> {
     return response.json();
 }
 
-export async function addEvent(event: { title: string;
-    photo: string;
-    description: string;
-    isTournament: boolean
-}): Promise<Event> {
-        const response = await fetch('/api/events', {
+export async function addEvent(event: any):Promise<Event> {
+    const response = await fetch('/api/events', {
             method: 'POST',
-            body: JSON.stringify(event),
-            headers: {
-                'Content-type': 'application/json',
-            },
+            body: event,
         });
-        // console.log(response);
         const result = await response.json();
         return result.newEvent;
     }

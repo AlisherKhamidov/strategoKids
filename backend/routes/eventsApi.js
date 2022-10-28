@@ -1,7 +1,21 @@
 /* eslint-disable max-len */
 
 const router = require('express').Router();
+const multer = require('multer');
+const path = require('path');
 const { Event } = require('../db/models');
+
+const imagePath = path.join(process.env.PWD, 'public/images');
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, imagePath);
+  },
+  filename: (req, file, cb) => {
+    cb(null, file.originalname);
+  },
+});
+
+const upload = multer({ storage });
 
 // /api/Events
 router
@@ -12,14 +26,16 @@ router
       .then((allEvents) => res.json(allEvents))
       .catch((error) => res.status(500).json({ message: error.message }));
   })
-  .post((req, res) => {
+  .post(upload.array('image'), async (req, res) => {
+    const image = req.files.map((el) => (el.originalname));
+    const imgStr = `./images/${image}`;
     const {
-      title, description, photo, isTournament,
+      title, description, isTournament,
     } = req.body;
-
-    // if (kidName && birthDate) {
+    let switcher = false;
+    if (isTournament === 'on') { switcher = true; }
     Event.create({
-      title, description, photo, isTournament,
+      title, description, photo: imgStr, isTournament: switcher,
 
     })
       .then((newEvent) => res

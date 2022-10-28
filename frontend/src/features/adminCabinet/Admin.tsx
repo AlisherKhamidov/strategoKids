@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+/* eslint-disable react/jsx-no-bind */
+import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState, useAppDispatch } from '../../store';
-import Data from '../applications/types/Data';
 import styleAdmin from './Admin.module.css';
 import AdminCard from './AdminCard';
 import { changeStatus, loadedApplications } from './adminSlice';
@@ -27,7 +27,7 @@ dispatch(changeStatus(adminData));
             <div className={styleAdmin.admin__header}>
                 <p>Заявки на уроки</p>
             </div>
-            <div>
+            <div className={styleAdmin.app__map}>
                 {ApplicationsList.filter((el) => !el.isChecked).map((application) => (
                     <AdminCard
                       key={application.id}
@@ -36,11 +36,11 @@ dispatch(changeStatus(adminData));
                     />
                 ))}
             </div>
-            <div className={styleAdmin.admin__header}>
+            <div className={styleAdmin.admin__header_two}>
                 <p>Обработанные заявки</p>
             </div>
 
-            <div>
+            <div className={styleAdmin.app__map}>
             {ApplicationsList.filter((el) => el.isChecked).map((application) => (
                     <AdminCard
                       handleStatusChange={handleStatusChange}

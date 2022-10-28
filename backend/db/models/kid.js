@@ -4,9 +4,10 @@ const {
 
 module.exports = (sequelize, DataTypes) => {
   class Kid extends Model {
-    static associate({ User, Group }) {
-      Kid.belongsTo(User, { foreignKey: 'user_id' });
-      Kid.belongsTo(Group, { foreignKey: 'group_id' });
+    static associate({ User, Group, Like }) {
+      Kid.belongsTo(User, { foreignKey: 'user_id', onDelete: 'cascade' });
+      Kid.belongsTo(Group, { foreignKey: 'group_id', onDelete: 'cascade' });
+      Kid.hasMany(Like, { foreignKey: 'kid_id', onDelete: 'cascade' });
     }
   }
   Kid.init({

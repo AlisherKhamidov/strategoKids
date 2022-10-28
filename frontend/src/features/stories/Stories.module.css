@@ -22,4 +22,5 @@
 
 .whiteBtn:hover {
   background-color: #ED6A1D;
+  cursor: pointer;
 }

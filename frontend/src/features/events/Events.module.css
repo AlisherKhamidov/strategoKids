@@ -37,6 +37,23 @@
   margin-right: 20px;
   margin-left: 20px;
   height: fit-content;
+  background-color: white;
+}
+
+.inputSpecial {
+  border: none;
+  height: 35px;
+  text-align: center;
+  border: 1px solid rgb(207, 201, 201);
+  border-radius: 7px;
+  font-family: "Inter";
+  font-size: 20px;
+  padding: 5px;
+  margin-right: 20px;
+  margin-left: 20px;
+  height: fit-content;
+  background-color: white;
+  color:
 }
 
 .inputButton {
@@ -54,10 +71,18 @@
 }
 
 .inputButton:hover {
-  color: #BDE3FF;
+  background-color: #9747FF;
+  cursor: pointer;
 }
 
+::placeholder { 
+  color: #9e9999;
+}
 
+label{
+  /* color: #9e9999; */
+
+}
 
 @font-face {
   font-family: "Inter"; 

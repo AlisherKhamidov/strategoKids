@@ -9,7 +9,11 @@ const eventsApi = require('./routes/eventsApi');
 const groupsApi = require('./routes/groupsApi');
 const authApi = require('./routes/authApi');
 const kidsApi = require('./routes/kidsApi');
+
+const telegramApi = require('./routes/telegramApi');
+
 const adminApi = require('./routes/adminApi');
+
 
 // конфигурация сервера
 const serverConfig = require('./config/serverConfig');
@@ -27,7 +31,11 @@ app.use('/api/events', eventsApi);
 app.use('/api/groups', groupsApi);
 app.use('/api/auth', authApi);
 app.use('/api/kids', kidsApi);
+
+app.use('/api/telegram', telegramApi);
+
 app.use('/api/admin', adminApi);
+
 
 app.get('*', (req, res) => {
   res.sendFile(

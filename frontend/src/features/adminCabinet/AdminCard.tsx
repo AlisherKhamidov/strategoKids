@@ -1,7 +1,5 @@
-import { useAppDispatch } from '../../store';
 import Data from '../applications/types/Data';
 import adminStyle from './AdminCard.module.css';
-import { changeStatus } from './adminSlice';
 
 interface AdminProp {
   handleStatusChange: (adminData: { status: boolean, appId: number }) => void;
@@ -15,9 +13,9 @@ function AdminCard({ application, handleStatusChange }: AdminProp): JSX.Element 
     // }
     return (
         <div className={adminStyle.app__card}>
-            <span>{application.kidName}</span>
+            <span className={adminStyle.name}>{application.kidName}</span>
             <span>{application.birthDate}</span>
-            <span>{application.parentName}</span>
+            <span>Родитель: {application.parentName}</span>
             <span>{application.phone}</span>
             <span>{application.experience}</span>
             <span>{application.isChecked}</span>
@@ -27,7 +25,8 @@ function AdminCard({ application, handleStatusChange }: AdminProp): JSX.Element 
               onClick={() => handleStatusChange(
                 { status: !application.isChecked, appId: application.id }
               )}
-            >Обработано
+            >
+              {application.isChecked ? 'Вернуть из архива' : 'Обработать'}
             </button>
         </div>
     );

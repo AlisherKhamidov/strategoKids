@@ -5,15 +5,21 @@ import { RootState, useAppDispatch } from '../../store';
 // import { deleteEvent } from './api';
 import Event from './types/Event';
 import EventCard from './EventCard';
-import { addEvent, loadEvents, deleteEvent,
-  updateEvent
+import { loadEvents, deleteEvent,
+  updateEvent,
+  addEvent
 } from './eventsSlice';
 import style from './Events.module.css';
+import * as api from './api';
 
 export default function Events(): JSX.Element {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [photo, setPhoto] = useState('');
+
+  const [checked, setChecked] = useState(false);
+  const handleClick = () :void => setChecked(!checked);
+
   const user = useSelector((state: RootState) => state.auth.user);
 
     const eventsList = useSelector((state: RootState) => state.events.eventsArr);
@@ -25,7 +31,12 @@ export default function Events(): JSX.Element {
 
   const handleSubmit = (event: FormEvent): void => {
     event.preventDefault();
-    dispatch(addEvent({ title, description, photo, isTournament: true }));
+    const data = new FormData(event.target as HTMLFormElement);
+    // api.addEvent(data);
+    dispatch(addEvent(data));
+    setTitle('');
+    setDescription('');
+    setPhoto('');
   };
   const handleRemove = (eventToDelete: Event): void => {
     dispatch(deleteEvent(eventToDelete.id));
@@ -38,13 +49,14 @@ export default function Events(): JSX.Element {
     <div className={style.container}>
       {user?.isAdmin && (
       <div className={style.containerForm}>
-        <form onSubmit={handleSubmit} className={style.inputForm}>
+        <form onSubmit={handleSubmit} className={style.inputForm} encType="multipart/form-data">
           <input
             className={style.input}
             type="text"
             placeholder="Название события"
             value={title}
             onChange={(event) => setTitle(event.target.value)}
+            name="title"
           />
           <input
             className={style.input}
@@ -52,14 +64,20 @@ export default function Events(): JSX.Element {
             placeholder="Введите описание"
             value={description}
             onChange={(event) => setDescription(event.target.value)}
+            name="description"
           />
           <input
             className={style.input}
-            type="text"
-            placeholder="Ссылка на фото"
-            value={photo}
-            onChange={(event) => setPhoto(event.target.value)}
+            type="file"
+            name="image"
+            placeholder=""
+            // value={photo}
+            // onChange={(event) => setPhoto(event.target.value)}
           />
+          <div className={style.inputSpecial}>
+          <label htmlFor="isTournament"> Турнир</label>
+           <input onClick={handleClick} className={style.input} type="checkbox" id="isTournament" name="isTournament" />
+          </div>
           <button className={style.inputButton} type="submit"> Создать мероприятие</button>
         </form>
       </div>
@@ -71,7 +89,7 @@ export default function Events(): JSX.Element {
         handleRemove={handleRemove}
         handleUpdate={handleUpdate}
       />
-    )) }
+    )).reverse() }
     </div>
   );
 }
