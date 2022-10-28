@@ -29,7 +29,7 @@ export default function Stories(): JSX.Element {
         />
         <Card
           photo={kid4}
-          title="Котики против динозавров"
+          title="Halloween"
           description="Дети начинают с изучения правил. 3000 руб. — 4 занятия по 60 минут за текущий месяц
 5000 руб. — 8 занятий по 60 минут за текущий месяц"
         />
